@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+	<!-- Bootstrap Icons -->
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+	<!-- Bootstrap -->
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+		crossorigin="anonymous" />
+
+	<link rel="stylesheet" href="css/styles.css" />
+
+</h:head>
+
+<h:body id="mybody">
+
+	<div class="container" align="center">
+		<div class="row align-items-center">
+
+			<div class="col-12">
+				<div id="boavinda">
+					<h3>Portal FaleicaDev.com</h3>
+
+					<h:form>
+						<h4>Login ou Email</h4>
+						<span class="ui-float-label"> <p:inputText id="float-input"
+								value="#{texto}" /> <p:outputLabel for="@previous"
+								value="Username" />
+						</span>
+
+						<h4>Senha</h4>
+						<span class="ui-float-label"> <p:inputText id="senha"
+								value="" /> <p:outputLabel for="@previous" value="Senha" />
+						</span>
+
+						<h5>Right Icon</h5>
+						<span class="ui-input-icon-right"> <i
+							class="pi pi-spin pi-spinner" /> <p:inputText />
+						</span>
+
+					</h:form>
+
+
+
+
+				</div>
+
+
+			</div>
+
+
+
+		</div>
+
+
+	</div>
+
+
+
+
+</h:body>
+</html>

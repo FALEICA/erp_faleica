@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+
+	<!-- Bootstrap Icons -->
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+	<!-- Bootstrap -->
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+		crossorigin="anonymous" />
+
+	<link rel="stylesheet" href="../css/mainPageStyles.css" />
+	<script src="../js/estruturaDoSistema.js"></script>
+</h:head>
+
+
+<body>
+	
+	<div class="container-fluid">
+
+
+
+		<!-- DIVISAO TOPO DA PAGINA -->
+	
+			<div class="row" id="rowHeader">
+				<div class="col-3" id="avatarCol">
+
+					<img src="img/avatartest.png" alt="imagem profile" style="width: 55px; height: 70px; margin: 2px" />
+
+					
+				</div>
+				<div class="col-6" id="badgeCol">
+					<h5>Aqui são informações importantes gerais  do sistema..</h5>
+				
+				
+				</div>
+				
+				<div class="col-3" id="tituloCol">
+					<h3 id="TituloSistema">-----------</h3> <!-- SIGETEXTUS -->
+				
+				</div>
+				
+				
+			</div>
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!--DIVISAO LINHA COM AS COLUNAS DE MENUS e COLUNAS DE COMPONENTES -->
+		<div class="row">
+
+
+			<!-- DIVISAO COLUNA DE MENUS... -->
+			<div class="col-3" id="colMenu">
+				<p:megaMenu orientation="horizontal" autoDisplay="false">
+
+					<p:submenu label="ADMINISTRAÇÃO DO SISTEMA" icon="pi pi-fw pi-pencil">
+						<p:column>
+							<p:submenu label="Cadastros">
+								<p:menuitem value="Cadastro de Usuarios"
+									url="sistema/cadastros/syscmp001cadastrousuarios.xhtml" />
+
+							</p:submenu>
+						</p:column>
+						
+						<p:column>
+							<p:submenu label="Consultas">
+								<p:menuitem value="Consulta de Usuarios do sistema"
+									url="sistema/cadastros/syscmp001cadastrousuarios.xhtml" />
+
+							</p:submenu>
+						</p:column>
+					</p:submenu>
+				</p:megaMenu>
+			</div>
+
+
+
+
+
+
+
+
+			<!-- DIVISAO COLUNA DE FUNCIONALIDADES E COMPONENTES... -->
+			<div class="col-9" id="colConteudo">
+
+
+				<div id="conteudo">
+
+					<p:dataTable var="est" value="#{estSisBean.findAll}">
+						<p:column headerText="Codigo Modulo">
+							<h:outputText value="#{est.cod_Modulo}" />
+						</p:column>
+						<p:column headerText="Descrição Modulo">
+							<h:outputText value="#{est.desc_Modulo}" />
+						</p:column>
+						<p:column headerText="Sigla do Modulo">
+							<h:outputText value="#{est.sigla_Modulo}" />
+						</p:column>
+						<p:column headerText="Link Geral">
+							<h:outputText value="#{est.link_Geral}" />
+						</p:column>
+					</p:dataTable>
+				</div>
+
+
+
+
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+		<!-- DIVISAO DO RODAPÉ DA PAGINA -->
+		<div>
+			<div class="row" id="rowFooter">
+				<div class="col-12">
+					<p>Aqui serao as informacoes do meu Footer(rodapé)</p>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+
+
+
+
+</body>
+</html>

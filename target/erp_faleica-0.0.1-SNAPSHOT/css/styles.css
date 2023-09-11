@@ -1,0 +1,66 @@
+body {
+	background-image: url("img/fundoandro1080.jpg");
+	background-size: cover;
+
+}
+
+h3 {
+	color: #FAEBD7;
+	margin-top: 30px;
+}
+
+.col-12 {
+	background-color: #4f4f4f;
+	padding: 30px;
+
+}
+
+.row{
+	height: 100%;
+	
+}
+
+#fundologin{
+		background-color: #FAEBD7;
+		width: 100%;
+	}
+	
+	#btnLogin{
+		width: 100px;
+	}
+
+
+@media screen and (min-width: 769px) {
+
+	.container {
+
+		width: 1280px;
+
+	}
+
+	.row {
+		height: 100%;
+	}
+
+	.col-12 {
+		margin-top: 90px;
+		margin-bottom: 50px;
+
+	}
+	.field{
+		width: 90%;
+	}
+	
+	#fundologin{
+		width: 50%;
+	}
+	
+	#btnLogin{
+		width: 80%;
+	}
+	
+	
+	
+	
+
+}
