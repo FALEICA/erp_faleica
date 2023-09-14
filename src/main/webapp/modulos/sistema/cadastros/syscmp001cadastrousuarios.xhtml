@@ -4,29 +4,38 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	template="../../../WEB-INF/template/layout.xhtml"
-	>
+	template="../../../WEB-INF/template/layout.xhtml">
 
-<ui:define name="conteudo">
+	<ui:define name="conteudo">
 
-	<h:form>
-		<p:dataTable var="est" value="#{estSisBean.findAll}">
-			<p:column headerText="Codigo Modulo">
-				<h:outputText value="#{est.cod_Modulo}" />
-			</p:column>
-			<p:column headerText="Descrição Modulo">
-				<h:outputText value="#{est.desc_Modulo}" />
-			</p:column>
-			<p:column headerText="Sigla do Modulo">
-				<h:outputText value="#{est.sigla_Modulo}" />
-			</p:column>
-			<p:column headerText="Link Geral">
-				<h:outputText value="#{est.link_Geral}" />
-			</p:column>
-		</p:dataTable>
+		<div class="row">
+			<div class="col-2"></div>
+			<div class="col-5">
+				<div class="card" id="cardConteudo">
+					<h:form id="frmCadUser">
+						<h5>CADASTRO DE USUARIOS</h5>
+						<br />
+						<label>Codigo : </label>
+						<p:inputText placeholder="codigo" required="true"
+							requiredMessage="codigo do usuario é obrigatorio!" />
+						<label>Login : </label>
+						<p:inputText placeholder="Login" required="true"
+							requiredMessage="codigo do usuario é obrigatorio!" />
+						<label>Email : </label>
+						<p:inputText placeholder="Email" required="true"
+							requiredMessage="codigo do usuario é obrigatorio!" />
+						<label>Senha : </label>
+						<p:inputText placeholder="Password" required="true"
+							requiredMessage="codigo do usuario é obrigatorio!" />
+						<br />
+						<p:button value="Salvar"></p:button>
 
-	</h:form>
+					</h:form>
+				</div>
+			</div>
+		</div>
 
 
-</ui:define>
+
+	</ui:define>
 </ui:composition>

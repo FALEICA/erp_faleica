@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<link rel="shortcut icon" href="/erp_faleica/img/favicon.ico" type="image/x-icon" />
+
+	<!-- Bootstrap Icons -->
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+	<!-- Bootstrap -->
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+		crossorigin="anonymous" />
+	
+	<link rel="stylesheet" href="/erp_faleica/css/templateStyle.css" />
+	
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+		crossorigin="anonymous" />
+
+
+	
+
+
+</h:head>
+
+
+<body>
+	<div class="container-fluid">
+
+
+
+		<!-- DIVISAO TOPO DA PAGINA -->
+		<div>
+			<div class="row" id="rowHeader">
+
+				<div class="col-3" id="imagemProfile">
+					<img src="/erp_faleica/img/avatartest.png" alt="avatar" 
+						style="height: 75px; width: 60px"
+						
+						/>
+					
+				</div>
+
+				<div class="col-6" id="badgeCol">
+					<p>Informações da badge</p>
+
+				</div>
+
+				<div class="col-3">
+					<h4 id="TituloSistema">SIGETEXTUS</h4>
+						
+
+				</div>
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!--DIVISAO LINHA COM AS COLUNAS DE MENUS e COLUNAS DE COMPONENTES -->
+		<div class="row">
+
+
+			<!-- DIVISAO COLUNA DE MENUS... -->
+			<div class="col-2" id="colMenu">
+				<p:megaMenu orientation="vertical" autoDisplay="false">
+
+					<p:submenu label="SISTEMA" icon="pi pi-fw pi-pencil">
+						<p:column>
+							<p:submenu label="Administração do Sistema">
+								<p:menuitem value="Cadastro de Usuario"
+									url="/erp_faleica/modulos/sistema/cadastros/syscmp001cadastrousuarios.xhtml" />
+							</p:submenu>
+						</p:column>
+					</p:submenu>
+
+					<p:submenu label="PESSOAS" icon="pi pi-fw pi-pencil">
+						<p:column>
+							<p:submenu label="Cadastro de pessoas">
+								<p:menuitem value="cadPessoas" 
+									url="/erp_faleica/modulos/pessoas/cadpessoas/pescmp001cadastropessoas.xhtml" />
+							</p:submenu>
+						</p:column>
+					</p:submenu>
+
+				</p:megaMenu>
+			</div>
+
+
+
+
+
+
+
+
+			<!-- DIVISAO COLUNA DE FUNCIONALIDADES E COMPONENTES... -->
+			<div class="col-10" id="colMenuHorizontal">
+				<div id="conteudo">
+					<ui:insert name="conteudo"></ui:insert>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+		<!-- DIVISAO DO RODAPÉ DA PAGINA -->
+		<div>
+			<div class="row" id="rowFooter">
+				<div class="col-12">
+					<p>Aqui serao as informacoes do meu Footer(rodapé)</p>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>

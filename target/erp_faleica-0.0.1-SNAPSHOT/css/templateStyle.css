@@ -1,0 +1,51 @@
+			body {
+				margin: 10px;
+				background-color: #000000;
+			}	
+			
+			
+			.container {
+				margin: 0;
+			}
+			
+			.row {
+				background-color: #FFFAFA;
+			}
+			
+			#colMenu {
+				background-color: #f1f1f1;
+			}
+			
+			#rowHeader {
+				background-color: #191970;
+			}
+			
+			#rowFooter {
+				background-color: #0000FF;
+			}
+			
+			#TituloSistema {
+				color: #ffffff;
+				text-align: center;
+				margin: 5px;
+				font-size: 2em;
+				font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+					'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+			}
+			
+			#badgeCol {
+				color: #FFFF00;
+			}
+			
+			#tituloCol {
+				align-items: center;
+			}
+			
+			#colConteudo {
+				background-color: #ffffff;
+			}
+			
+			#rowFooter {
+				color: #FFFF00;
+			}
+			
