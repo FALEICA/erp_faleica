@@ -4,13 +4,104 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	template="../../../WEB-INF/template/layout.xhtml"
-	>
+	template="../../../WEB-INF/template/layout.xhtml">
 
-<ui:define name="conteudo">
+	<ui:define name="conteudo">
 
-	<p>Cadastro de usuarios</p>
+		<div class="row">
+
+			<div class="col-12">
+				<div class="card" id="cardConteudo">
+					<h:form id="frmCadUser">
+						<h5>CADASTRO DE USUARIOS</h5>
+						<br />
+
+						<p:messages />
+
+						<h:panelGrid id="grid" columns="2">
+
+							<p:outputLabel value="Codigo do Usuario: " for="usuCodigo" />
+							<h:panelGroup>
+								<p:inputText id="usuCodigo" value="#{cadUserBean.user.usu_Cod}"
+									required="true" />
+								<p:message for="usuCodigo" />
+							</h:panelGroup>
+
+							<p:outputLabel value="Login: " for="usuLogin" />
+							<h:panelGroup>
+								<p:inputText id="usuLogin" value="#{cadUserBean.user.usu_Login}"
+									required="true" />
+								<p:message for="usuLogin" />
+							</h:panelGroup>
+
+							<p:outputLabel value="E-mail: " for="usuEmail" />
+							<h:panelGroup>
+								<p:inputText id="usuEmail" value="#{cadUserBean.user.usu_Email}"
+									required="true" />
+								<p:message for="usuEmail" />
+							</h:panelGroup>
+
+							<p:outputLabel value="Senha: " for="usuPwd" />
+							<h:panelGroup>
+								<p:password id="usuPwd" value="#{cadUserBean.user.usu_Senha}"
+									required="true" />
+								<p:message for="usuPwd" />
+							</h:panelGroup>
 
 
-</ui:define>
+						</h:panelGrid>
+						<p:commandButton action="#{cadUserBean.saveUser}" value="SALVAR"
+							update="grid" />
+
+
+					</h:form>
+
+
+
+
+				</div>
+			</div>
+		</div>
+		<div class="row" id="divTabela">
+			<div class="col-12">
+				<h:form id="formTable">
+					<h:dataTable id="tabelaFormatacao" var="allusers"
+						value="#{cadUserBean.allUsers}" 
+						cellpadding="5"
+						rendered="true"
+						styleClass="order-table"
+						headerClass="order-table-header"
+						rowClasses="order-table-odd-row order-table-even-row"
+						
+						
+						
+						
+						
+						>
+						<h:column headerText="Usu_ID" >
+							<h:outputText value="#{allusers.usu_Id}" />
+						</h:column>
+						<h:column headerText="Usu_Cod">
+							<h:outputText value="#{allusers.usu_Cod}" />
+						</h:column>
+						<h:column headerText="Login">
+							<h:outputText value="#{allusers.usu_Login}" />
+						</h:column>
+						<h:column headerText="Email">
+							<h:outputText value="#{allusers.usu_Email}" />
+						</h:column>
+						<h:column headerText="Password">
+							<h:outputText value="#{allusers.usu_Senha}" />
+						</h:column>
+					</h:dataTable>
+
+				</h:form>
+
+
+			</div>
+		</div>
+
+
+
+	</ui:define>
 </ui:composition>

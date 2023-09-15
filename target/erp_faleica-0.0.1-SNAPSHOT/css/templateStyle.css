@@ -1,51 +1,86 @@
-			body {
-				margin: 10px;
-				background-color: #000000;
-			}	
+body {
+	margin: 10px;
+	background-color: #000000;
+}	
+
+
+.container {
+	margin: 0;
+}
+
+.row {
+	background-color: #FFFAFA;
+}
+
+#colMenu {
+	background-color: #f1f1f1;
+}
+
+#rowHeader {
+	background-color: #191970;
+}
+
+#rowFooter {
+	background-color: #0000FF;
+}
+
+#TituloSistema {
+	color: #ffffff;
+	text-align: center;
+	margin: 5px;
+	font-size: 2em;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#badgeCol {
+	color: #FFFF00;
+}
+
+#tituloCol {
+	align-items: center;
+}
+
+#fundoconteudo {
+	background-color: #ffffff;
+}
+
+#cardConteudo{
+	background-color: #D3D3D3;
+	color: #000000;
+	font-size: 1.2em;
+	font-weight: bold;	
+	
+}
+
+#conteudo{
+	padding: 20px;
+
+}
+
+#rowFooter {
+	color: #FFFF00;
+}
+
+
+
+
+
+
+#tabelaFormatacao.order-table{   
+	border-collapse:collapse;
+	background-color: #FFFF00;
+}
+
+#tabelaFormatacao.order-table-header{
+	text-align:center;
+	background:none repeat scroll 0 0 #E5E5E5;
+	border-bottom:1px solid #BBBBBB;
+	padding:16px;
+	
+	
+}
+
 			
 			
-			.container {
-				margin: 0;
-			}
-			
-			.row {
-				background-color: #FFFAFA;
-			}
-			
-			#colMenu {
-				background-color: #f1f1f1;
-			}
-			
-			#rowHeader {
-				background-color: #191970;
-			}
-			
-			#rowFooter {
-				background-color: #0000FF;
-			}
-			
-			#TituloSistema {
-				color: #ffffff;
-				text-align: center;
-				margin: 5px;
-				font-size: 2em;
-				font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-					'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-			}
-			
-			#badgeCol {
-				color: #FFFF00;
-			}
-			
-			#tituloCol {
-				align-items: center;
-			}
-			
-			#colConteudo {
-				background-color: #ffffff;
-			}
-			
-			#rowFooter {
-				color: #FFFF00;
-			}
 			
