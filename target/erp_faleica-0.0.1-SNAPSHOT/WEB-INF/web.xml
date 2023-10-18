@@ -5,7 +5,7 @@
 	version="3.1">
 
 	<welcome-file-list>
-		<welcome-file>001_pageLogin.xhtml</welcome-file>
+		<welcome-file>erp_login.xhtml</welcome-file>
 		<welcome-file>default.html</welcome-file>
 	</welcome-file-list>
 

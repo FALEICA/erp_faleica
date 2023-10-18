@@ -28,6 +28,9 @@ public class UserDAO implements Serializable {
 	
 	
 	private static final long serialVersionUID = 1L;
+	
+	
+	
 	private Connection daoConn = new ConexaoBancoDados().ConexaoMySQl();
 	
 	

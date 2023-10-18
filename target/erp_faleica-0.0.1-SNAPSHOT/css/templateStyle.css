@@ -63,24 +63,49 @@ body {
 }
 
 
-
-
-
-
-#tabelaFormatacao.order-table{   
-	border-collapse:collapse;
-	background-color: #FFFF00;
+#divTabela{
+	margin-top: 20px;
 }
 
-#tabelaFormatacao.order-table-header{
+
+
+
+
+.order-table{   
+	border-collapse:collapse;
+	
+	
+}
+
+.order-table-header{
 	text-align:center;
 	background:none repeat scroll 0 0 #E5E5E5;
-	border-bottom:1px solid #BBBBBB;
+	border:1px dotted #000000;
 	padding:16px;
 	
 	
 }
 
+.order-table-odd-row{	
+	background-color: #BBBBBB;
+	border: 1px dotted #000000;
+	color: #191970;
+	
+	
+}
+
+.order-table-even-row{	
+	background-color: #ffffff;
+	border: 1px dotted #000000;
+	color: #191970;
+	
+	
+}
+
+.c1,.c2,.c3,.c4
+{
+	border: 1px dotted #000000;
+}
 			
 			
 			

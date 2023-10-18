@@ -48,58 +48,121 @@
 								<p:message for="usuPwd" />
 							</h:panelGroup>
 
-
 						</h:panelGrid>
 						<p:commandButton action="#{cadUserBean.saveUser}" value="SALVAR"
 							update="grid" />
-
-
 					</h:form>
-
-
-
-
 				</div>
 			</div>
-		</div>
-		<div class="row" id="divTabela">
-			<div class="col-12">
-				<h:form id="formTable">
-					<h:dataTable id="tabelaFormatacao" var="allusers"
-						value="#{cadUserBean.allUsers}" 
-						cellpadding="5"
-						rendered="true"
-						styleClass="order-table"
-						headerClass="order-table-header"
-						rowClasses="order-table-odd-row order-table-even-row"
-						
-						
-						
-						
-						
-						>
-						<h:column headerText="Usu_ID" >
+
+			<div class="row">
+				<h:form>
+					<p:dataTable 
+						id="dadosDataTable" 
+						var="allusers" 
+						showGridlines="true"
+						size="small"
+						value="#{cadUserBean.allUsers}">
+						<p:column id="hdUsuario" headerText="Usuario_Id">
 							<h:outputText value="#{allusers.usu_Id}" />
-						</h:column>
-						<h:column headerText="Usu_Cod">
+						</p:column>
+						<p:column headerText="Codigo">
 							<h:outputText value="#{allusers.usu_Cod}" />
-						</h:column>
-						<h:column headerText="Login">
-							<h:outputText value="#{allusers.usu_Login}" />
-						</h:column>
-						<h:column headerText="Email">
+						</p:column>
+						<p:column headerText="e-Mail">
 							<h:outputText value="#{allusers.usu_Email}" />
-						</h:column>
-						<h:column headerText="Password">
+						</p:column>
+						<p:column headerText="Pass">
 							<h:outputText value="#{allusers.usu_Senha}" />
-						</h:column>
-					</h:dataTable>
+						</p:column>
+					</p:dataTable>
+
+					<p:commandButton title="ExportarExcel" icon="fa fa-file-excel-o"
+						ajax="false">XLS
+						<p:dataExporter type="xls" target="dadosDataTable"
+							fileName="userexcel">
+						</p:dataExporter>
+					</p:commandButton>
+
+					<p:commandButton title="ExportarXml" icon="fa fa-file-excel-o"
+						ajax="false">XML
+						<p:dataExporter type="xml" target="dadosDataTable"
+							fileName="userxml">
+						</p:dataExporter>
+					</p:commandButton>
 
 				</h:form>
 
-
 			</div>
 		</div>
+
+		<!-- <div class="row" id="divTabela">
+			<div class="col-12">
+				<h:form id="formTable">
+					<h:dataTable id="dadosDtatable" var="allusers"
+						value="#{cadUserBean.allUsers}" cellpadding="5" rendered="true"
+						styleClass="order-table" headerClass="order-table-header"
+						rowClasses="order-table-odd-row, order-table-even-row"
+						columnClasses="c1, c2, c3, c4">
+
+						<h:column>
+							<h:selectBooleanCheckbox value="checked"></h:selectBooleanCheckbox>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Id" />
+							</f:facet>
+							<h:outputText value="#{allusers.usu_Id}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Codigo" />
+							</f:facet>
+							<h:outputText value="#{allusers.usu_Cod}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="Nome" />
+							</f:facet>
+							<h:outputText value="#{allusers.usu_Login}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">
+								<h:outputText value="E-mail" />
+							</f:facet>
+							<h:outputText value="#{allusers.usu_Email}" />
+						</h:column>
+
+						<h:column headerText="Password">
+							<f:facet name="header">
+								<h:outputText value="Senha" />
+							</f:facet>
+							<h:outputText value="#{allusers.usu_Senha}" />
+						</h:column>
+
+						<h:column>
+							<h:button value="editar"></h:button>
+							<h:button value="excluir"></h:button>
+						</h:column>
+
+					</h:dataTable>
+
+					<p:commandButton title="Exportar" icon="fa fa-file-excel-o"
+						ajax="false">
+						<p:dataExporter type="xls" target="dadosDtatable"
+							fileName="usuarios">
+						</p:dataExporter>
+					</p:commandButton>
+
+				</h:form>
+			</div> -->
+
+
+
 
 
 

@@ -4,29 +4,34 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	template="../../../WEB-INF/template/layout.xhtml"
-	>
+	template="../../../WEB-INF/template/layout.xhtml">
 
-<ui:define name="conteudo">
+	<ui:define name="conteudo">
 
-	<h:form>
-		<p:dataTable var="est" value="#{estSisBean.findAll}">
-			<p:column headerText="Codigo Modulo">
-				<h:outputText value="#{est.cod_Modulo}" />
-			</p:column>
-			<p:column headerText="Descrição Modulo">
-				<h:outputText value="#{est.desc_Modulo}" />
-			</p:column>
-			<p:column headerText="Sigla do Modulo">
-				<h:outputText value="#{est.sigla_Modulo}" />
-			</p:column>
-			<p:column headerText="Link Geral">
-				<h:outputText value="#{est.link_Geral}" />
-			</p:column>
-		</p:dataTable>
+		<h:form>
+			<p:dataTable id="dadosDataTable" var="est" value="#{estSisBean.findAll}">
+				<p:column headerText="Codigo Modulo">
+					<h:outputText value="#{est.cod_Modulo}" />
+				</p:column>
+				<p:column headerText="Descrição Modulo">
+					<h:outputText value="#{est.desc_Modulo}" />
+				</p:column>
+				<p:column headerText="Sigla do Modulo">
+					<h:outputText value="#{est.sigla_Modulo}" />
+				</p:column>
+				<p:column headerText="Link Geral">
+					<h:outputText value="#{est.link_Geral}" />
+				</p:column>
+			</p:dataTable>
 
-	</h:form>
+			<p:commandButton title="Exportar" icon="fa fa-file-excel-o"
+				ajax="false">
+				<p:dataExporter type="xls" target="dadosDataTable" fileName="usuarios">
+				</p:dataExporter>
+			</p:commandButton>
+
+		</h:form>
 
 
-</ui:define>
+	</ui:define>
 </ui:composition>

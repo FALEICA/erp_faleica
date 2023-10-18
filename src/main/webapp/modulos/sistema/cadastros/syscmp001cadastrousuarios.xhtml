@@ -8,110 +8,169 @@
 
 	<ui:define name="conteudo">
 
-		<div class="row">
+		<div class="card crud-demo">
+			<h:form id="form">
+				<p:growl id="messages" showDetail="true" />
 
-			<div class="col-12">
-				<div class="card" id="cardConteudo">
-					<h:form id="frmCadUser">
-						<h5>CADASTRO DE USUARIOS</h5>
-						<br />
+				<p:toolbar>
+					<p:toolbarGroup>
+						<p:commandButton value="New" icon="pi pi-plus"
+							actionListener="#{crudView.openNew}"
+							update=":dialogs:manage-product-content"
+							oncomplete="PF('manageProductDialog').show()"
+							styleClass="ui-button-success" style="margin-right: .5rem">
+							<p:resetInput target=":dialogs:manage-product-content" />
+						</p:commandButton>
+						<p:commandButton id="delete-products-button"
+							value="#{crudView.deleteButtonMessage}" icon="pi pi-trash"
+							actionListener="#{crudView.deleteSelectedProducts}"
+							styleClass="ui-button-danger"
+							disabled="#{!crudView.hasSelectedProducts()}" update="@this">
+							<p:confirm header="Confirmation"
+								message="Delete the selected products?"
+								icon="pi pi-exclamation-triangle" />
+						</p:commandButton>
+					</p:toolbarGroup>
+				</p:toolbar>
 
-						<p:messages />
+				<p:dataTable id="dtUsers" widgetVar="dtProducts" var="user"
+					value="#{cadUserBean.users}" reflow="true"
+					styleClass="products-table" size="small"
+					selection="#{cadUserBean.selectedUsers}" rowKey="#{user.usu_Id}"
+					paginator="true" rows="5" rowSelectMode="add"
+					paginatorPosition="bottom">
+					<f:facet name="header">
+						<div class="products-table-header">
+							<span style="font-weight: bold">USUARIOS</span> <span
+								class="filter-container ui-input-icon-left"> <i
+								class="pi pi-search"></i> <p:inputText id="globalFilter"
+									onkeyup="PF('dtUsers').filter()" placeholder="Search" />
+							</span>
+						</div>
+					</f:facet>
 
-						<h:panelGrid id="grid" columns="2">
+					<p:ajax event="rowSelect" update=":form:delete-products-button" />
+					<p:ajax event="rowUnselect" update=":form:delete-products-button" />
+					<p:ajax event="rowSelectCheckbox"
+						update=":form:delete-products-button" />
+					<p:ajax event="rowUnselectCheckbox"
+						update=":form:delete-products-button" />
+					<p:ajax event="toggleSelect" update=":form:delete-products-button" />
 
-							<p:outputLabel value="Codigo do Usuario: " for="usuCodigo" />
-							<h:panelGroup>
-								<p:inputText id="usuCodigo" value="#{cadUserBean.user.usu_Cod}"
+					<p:column selectionMode="multiple" exportable="false"></p:column>
+
+					<p:column headerText="Codigo" sortBy="#{user.usu_Cod}"
+						filterBy="#{user.usu_Cod}">
+						<h:outputText value="#{user.usu_Cod}" />
+					</p:column>
+					<p:column headerText="Nome" sortBy="#{user.usu_Login}"
+						filterBy="#{user.usu_Login}">
+						<h:outputText value="#{user.usu_Login}" />
+					</p:column>					
+					<p:column headerText="Email" sortBy="#{user.usu_Email}"
+						filterBy="#{user.usu_Email}">
+						<h:outputText value="#{user.usu_Email}" />
+					</p:column>
+					<p:column exportable="false">
+						<p:commandButton icon="pi pi-pencil"
+							update=":dialogs:manage-product-content"
+							oncomplete="PF('manageProductDialog').show()"
+							styleClass="edit-button rounded-button ui-button-success"
+							process="@this">
+							<f:setPropertyActionListener value="#{product}"
+								target="#{crudView.selectedProduct}" />
+							<p:resetInput target=":dialogs:manage-product-content" />
+						</p:commandButton>
+						<p:commandButton class="ui-button-warning rounded-button"
+							icon="pi pi-trash" process="@this"
+							oncomplete="PF('deleteProductDialog').show()">
+							<f:setPropertyActionListener value="#{product}"
+								target="#{crudView.selectedProduct}" />
+						</p:commandButton>
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+
+			<h:form id="dialogs">
+				<p:dialog header="Product Details" showEffect="fade" modal="true"
+					widgetVar="manageProductDialog" responsive="true">
+					<p:outputPanel id="manage-product-content" class="ui-fluid">
+						<p:outputPanel rendered="#{not empty crudView.selectedProduct}">
+							<p:graphicImage
+								name="images/product/#{crudView.selectedProduct.image}"
+								library="demo" styleClass="product-image"
+								rendered="#{not empty crudView.selectedProduct.image}" />
+							<div class="field">
+								<p:outputLabel for="name">Name</p:outputLabel>
+								<p:inputText id="name" value="#{crudView.selectedProduct.name}"
 									required="true" />
-								<p:message for="usuCodigo" />
-							</h:panelGroup>
+							</div>
+							<div class="field">
+								<p:outputLabel for="description">Description</p:outputLabel>
+								<p:inputTextarea id="description"
+									value="#{crudView.selectedProduct.description}" />
+							</div>
+							<div class="field">
+								<p:outputLabel for="category">Category</p:outputLabel>
+								<p:selectOneRadio id="category"
+									value="#{crudView.selectedProduct.category}"
+									layout="responsive" columns="2">
+									<f:selectItem itemLabel="Accessories" itemValue="Accessories" />
+									<f:selectItem itemLabel="Clothing" itemValue="Clothing" />
+									<f:selectItem itemLabel="Electronics" itemValue="Electronics" />
+									<f:selectItem itemLabel="Fitness" itemValue="Fitness" />
+								</p:selectOneRadio>
+							</div>
+							<div class="formgrid grid">
+								<div class="field col">
+									<p:outputLabel for="price">Price</p:outputLabel>
+									<p:inputNumber id="price"
+										value="#{crudView.selectedProduct.price}" symbol=" USD"
+										symbolPosition="s" decimalSeparator="." thousandSeparator="," />
+								</div>
+								<div class="field col">
+									<p:outputLabel for="quantity">Quantity</p:outputLabel>
+									<p:spinner id="quantity" min="0"
+										value="#{crudView.selectedProduct.quantity}" />
+								</div>
+							</div>
+						</p:outputPanel>
+					</p:outputPanel>
 
-							<p:outputLabel value="Login: " for="usuLogin" />
-							<h:panelGroup>
-								<p:inputText id="usuLogin" value="#{cadUserBean.user.usu_Login}"
-									required="true" />
-								<p:message for="usuLogin" />
-							</h:panelGroup>
+					<f:facet name="footer">
+						<p:commandButton value="Save" icon="pi pi-check"
+							actionListener="#{crudView.saveProduct}"
+							update="manage-product-content"
+							process="manage-product-content @this" />
+						<p:commandButton value="Cancel" icon="pi pi-times"
+							onclick="PF('manageProductDialog').hide()"
+							class="ui-button-secondary" type="button" />
+					</f:facet>
+				</p:dialog>
 
-							<p:outputLabel value="E-mail: " for="usuEmail" />
-							<h:panelGroup>
-								<p:inputText id="usuEmail" value="#{cadUserBean.user.usu_Email}"
-									required="true" />
-								<p:message for="usuEmail" />
-							</h:panelGroup>
+				<p:confirmDialog widgetVar="deleteProductDialog" showEffect="fade"
+					width="300" message="Delete the product?" header="Confirm"
+					severity="warn">
+					<p:commandButton value="Yes" icon="pi pi-check"
+						actionListener="#{crudView.deleteProduct}" process="@this"
+						update=":form:delete-products-button"
+						oncomplete="PF('deleteProductDialog').hide()" />
+					<p:commandButton value="No" type="button"
+						styleClass="ui-button-secondary" icon="pi pi-times"
+						onclick="PF('deleteProductDialog').hide()" />
+				</p:confirmDialog>
 
-							<p:outputLabel value="Senha: " for="usuPwd" />
-							<h:panelGroup>
-								<p:password id="usuPwd" value="#{cadUserBean.user.usu_Senha}"
-									required="true" />
-								<p:message for="usuPwd" />
-							</h:panelGroup>
-
-
-						</h:panelGrid>
-						<p:commandButton action="#{cadUserBean.saveUser}" value="SALVAR"
-							update="grid" />
-
-
-					</h:form>
-
-
-
-
-				</div>
-			</div>
+				<p:confirmDialog global="true" showEffect="fade" width="300">
+					<p:commandButton value="Yes" type="button"
+						styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					<p:commandButton value="No" type="button"
+						styleClass="ui-confirmdialog-no ui-button-secondary"
+						icon="pi pi-times" />
+				</p:confirmDialog>
+			</h:form>
 		</div>
-		<div class="row" id="divTabela">
-			<div class="col-12">
-				<h:form id="formTable">
-					<h:dataTable id="tabelaFormatacao" var="allusers"
-						value="#{cadUserBean.allUsers}" cellpadding="5" rendered="true"
-						styleClass="order-table" headerClass="order-table-header"
-						rowClasses="order-table-odd-row, order-table-even-row"
-						columnClasses="c1, c2, c3, c4">
-						
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Id" />
-							</f:facet>
-							<h:outputText value="#{allusers.usu_Id}" />
-						</h:column>
 
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Codigo" />
-							</f:facet>
-							<h:outputText value="#{allusers.usu_Cod}" />
-						</h:column>
-						
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Nome" />
-							</f:facet>
-							<h:outputText value="#{allusers.usu_Login}" />
-						</h:column>
-						
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="E-mail" />
-							</f:facet>
-							<h:outputText value="#{allusers.usu_Email}" />
-						</h:column>
-						
-						<h:column headerText="Password">
-							<f:facet name="header">
-								<h:outputText value="Senha" />
-							</f:facet>
-							<h:outputText value="#{allusers.usu_Senha}" />
-						</h:column>
-					</h:dataTable>
-
-				</h:form>
-
-
-			</div>
-		</div>
 
 
 
