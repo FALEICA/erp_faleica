@@ -1,8 +1,10 @@
-body {
-	background-image: url("img/fundoandro1080.jpg");
+#mybody {
+	background-color: #000000; 
 	background-size: cover;
 
 }
+
+
 
 h3 {
 	color: #FAEBD7;
@@ -28,6 +30,12 @@ h3 {
 	#btnLogin{
 		width: 100px;
 	}
+	
+#btnUpdate,
+#btnDelete{
+	margin-right: 5px;
+	
+}
 
 
 @media screen and (min-width: 769px) {

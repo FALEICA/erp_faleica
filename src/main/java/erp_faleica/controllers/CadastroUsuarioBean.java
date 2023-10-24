@@ -3,72 +3,95 @@ package erp_faleica.controllers;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.view.ViewScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.PrimeFaces;
+
 import erp_faleica.models.User;
+import erp_faleica.models.messages.MensagensDoSistema;
 import erp_faleica.repositorio.UserDAO;
 
 @Named(value = "cadUserBean")
-@ViewScoped
+@RequestScoped
 public class CadastroUsuarioBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private List<User> users;
-	private User selectedUser;
-	private List<User> selectedUsers;
+	
+	private static User selectedUser;	
+	private List<User> listUser;
 	
 	
-	
-	
-	
+	@Inject
+	UserDAO userdao;
 
-	/**
-	 * @return the users
-	 */
-	public List<User> getUsers() {
-		UserDAO usdao = new UserDAO();
-		return usdao.getUserAll();
+	public void addMessage(FacesMessage.Severity severity, String summary, String detail) {
+        FacesContext.getCurrentInstance().
+                addMessage(null, new FacesMessage(severity, summary, detail));
+    }
+
+
+	public List<User> getListUser() {
+		this.listUser = userdao.getUserAll();
+		return listUser;
 	}
 
-	/**
-	 * @param users the users to set
-	 */
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setListUser(List<User> listUser) {
+		this.listUser = listUser;
 	}
 
-	/**
-	 * @return the selectedUser
-	 */
-	public User getSelectedUser() {
+	public User getSelectedUser() {		
 		return selectedUser;
 	}
 
-	/**
-	 * @param selectedUser the selectedUser to set
-	 */
+	
 	public void setSelectedUser(User selectedUser) {
-		this.selectedUser = selectedUser;
+		CadastroUsuarioBean.selectedUser = selectedUser;
+	}
+	
+	public void saveUser() {
+		System.out.println("Entrou no saveUser");
+		if(selectedUser.getUsu_Id() == null) {
+			selectedUser.setUsu_Id(0);
+		}
+		MensagensDoSistema msg = userdao.saveUser(selectedUser);
+		if(msg.getTypeMessage() == 1) {
+			addMessage(FacesMessage.SEVERITY_INFO, "ERROR!", msg.getWriteMessage());
+		}
+		if(msg.getTypeMessage() == 2) {
+			addMessage(FacesMessage.SEVERITY_WARN, "ERROR!", msg.getWriteMessage());
+			
+		}
+		if(msg.getTypeMessage() == 3) {
+			addMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", msg.getWriteMessage());
+		}
+		
+		PrimeFaces.current().ajax().update("form:messages", "form:dt_iduser");
+	}
+	
+	
+	
+	public void openNew() {
+		CadastroUsuarioBean.selectedUser = new User();
+	}
+	
+	
+	
+	
+	public void deleteItem() {
+		System.out.println("Passei aqui no deleteItem");
+		if(selectedUser.getUsu_Id() != null && selectedUser.getUsu_Cod() != null) {
+			String message = userdao.deleteUser(selectedUser);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(message));
+			PrimeFaces.current().ajax().update("form:messages", "form:dt_iduser");
+		}
+		
 	}
 
-	/**
-	 * @return the selectedUsers
-	 */
-	public List<User> getSelectedUsers() {
-		return selectedUsers;
-	}
-
-	/**
-	 * @param selectedUsers the selectedUsers to set
-	 */
-	public void setSelectedUsers(List<User> selectedUsers) {
-		this.selectedUsers = selectedUsers;
-	}
-	
-	
-	
 	
 
 }

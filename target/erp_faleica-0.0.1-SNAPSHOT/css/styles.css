@@ -1,5 +1,5 @@
-body {
-	background-image: url("img/fundoandro1080.jpg");
+#mybody {
+	background-color: #000000; 
 	background-size: cover;
 
 }
