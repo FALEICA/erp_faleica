@@ -6,15 +6,36 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import erp_faleica.models.EstruturaSistemaModel;
+import erp_faleica.models.User;
+import erp_faleica.models.menu.MenuModulos;
 
+
+@ApplicationScoped
 public class EstruturaSistemaDAO implements Serializable {
-
+	
+	private String modulo_Id = "modulo_Id" ; 
+	private String modulo_CodNumber = "modulo_CodNumber";
+	private String modulo_CodSigla = "modulo_CodSigla"; 
+	private String modulo_Descricao = "modulo_Descricao";
+	private String modulo_link = "modulo_link";
+	private String dta_Incl = "dta_Incl";
+	private String dta_Alter = "dta_Alter"; 
+	private String usu_Incl = "usu_Incl"; 
+	private String usu_Alter = "usu_Alter";
 	
 	private static final long serialVersionUID = 1L;
-	private Connection daoConn = new ConexaoBancoDados().ConexaoMySQl();
+	
+	
+	
+	Connection daoConn = new ConexaoBancoDados().ConexaoMySQl();
+	
+	
 	
 	
 	public List<EstruturaSistemaModel> getEstruturaSistema() {
@@ -31,7 +52,7 @@ public class EstruturaSistemaDAO implements Serializable {
 				+ "    md.modulo_link,\r\n"
 				+ "    mn.menu_Link,\r\n"
 				+ "    cp.compo_Link,\r\n"
-				+ "    CONCAT(md.modulo_link,\r\n"
+				+ "    CONCAT('/erp_faleica/modulos/', md.modulo_link,\r\n"
 				+ "            '/',\r\n"
 				+ "            mn.menu_Link,\r\n"
 				+ "            '/',\r\n"
@@ -74,11 +95,20 @@ public class EstruturaSistemaDAO implements Serializable {
 		 return list;
 		 
 		 
+		 
+		 
 			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				daoConn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		
@@ -86,6 +116,49 @@ public class EstruturaSistemaDAO implements Serializable {
 		
 		return new ArrayList<>();
 		
+	}
+	
+	
+	
+	
+	public List<MenuModulos> getAllModulos(User user){
+		String sqlTxt = "SELECT * FROM erp_faleica.erp_modulos;";
+		
+		try {
+			
+		 PreparedStatement ps = daoConn.prepareStatement(sqlTxt);
+		 ResultSet rs = ps.executeQuery();
+		 
+		 List<MenuModulos> list = new ArrayList<>();
+		 
+		 while(rs.next()) {
+			 MenuModulos mod = new MenuModulos();
+			 mod.setModulo_Id(rs.getInt(modulo_Id));
+			 mod.setModulo_CodNumber(rs.getInt(modulo_CodNumber));
+			 mod.setModulo_CodSigla(rs.getString(modulo_CodSigla));
+			 mod.setModulo_Descricao(rs.getString(modulo_Descricao));
+			 mod.setModulo_link(rs.getString(modulo_link));
+			 
+			 list.add(mod); 	 
+			 
+		 }
+		 
+		 return list;
+		 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				daoConn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return new ArrayList<>();
 	}
 	
 
