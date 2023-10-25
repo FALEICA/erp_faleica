@@ -1,9 +1,0 @@
-erp_faleica\applicationlocal\ApplicationTest.class
-erp_faleica\controllers\CadastroUsuarioBean.class
-erp_faleica\repositorio\EstruturaSistemaDAO.class
-erp_faleica\models\UserAccess.class
-erp_faleica\models\EstruturaSistemaModel.class
-erp_faleica\models\User.class
-erp_faleica\repositorio\ConexaoBancoDados.class
-erp_faleica\controllers\EstruturaSistemaBean.class
-erp_faleica\repositorio\UserDAO.class

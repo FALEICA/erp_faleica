@@ -7,101 +7,143 @@
 	template="../../../WEB-INF/template/layout.xhtml">
 
 	<ui:define name="conteudo">
-	
-	<h:form>
-		<div class="card">
-			<p:dataTable 
-				id="dt_iduser"
-				var="dtuser"
-				widgetVar="dtusers"
-				value="#{cadUserBean.listUser}"
-				rowKey="#{dtuser.usu_Id}"
-				paginator="true"
-				paginatorPosition="bottom"
-				rows="5"
-				size="small"
-				rowSelectMode="add"	
-				
-				
-			>
-					<p:column selectionMode="single" exportable="false"></p:column>
-			
-					<p:column headerText="Codigo">
-						<h:outputText value="#{dtuser.usu_Cod}" />				
-					</p:column>
-					<p:column headerText="Usuario">
-						<h:outputText value="#{dtuser.usu_Login}" />				
-					</p:column>
-					<p:column headerText="Email">
-						<h:outputText value="#{dtuser.usu_Email}" />				
-					</p:column>
-					
-					<p:column>
-						<p:commandButton 
-							icon="pi pi-pencil"
-							styleClass="edit-button rounded-button ui-button-success"
-							update=":dialog:cadatro-usuario"
-							oncomplete="PF('manageProductDialog').show()"
-							process="@this"
-						>
-							<f:setPropertyActionListener value="#{dtuser}" target="#{cadUserBean.selectedUser}" />
-							<p:resetInput target=":dialog:cadatro-usuario"/>
-							
-						
-						</p:commandButton>
-						<p:commandButton 
-							icon="pi pi-trash"
-							styleClass="ui-button-warning rounded-button"
-						>
-						
-						</p:commandButton>
-					</p:column>
-			</p:dataTable>		
-		</div>	
-	</h:form>
-	
-	<h:form id="dialog">
-		<p:dialog 
-			header="CADASTRO" 
-			showEffect="fade" 
-			modal="true" 
-			responsive="true"
-			widgetVar="manageProductDialog"
-			
-		>
-		<p:outputPanel id="cadatro-usuario" class="ui-fluid">
-				<p:outputPanel rendered="#{not empty cadUserBean.selectedUser}">
-					<div class="field">
-						<p:outputLabel for="usu_Cod">Codigo</p:outputLabel>
-						<p:inputText id="usu_Cod" value="#{cadUserBean.selectedUser.usu_Cod}" required="true"/>
-					</div>
-					<div class="field">
-						<p:outputLabel for="usu_Login">Login</p:outputLabel>
-						<p:inputText id="usu_Login" value="#{cadUserBean.selectedUser.usu_Login}" required="true"/>
-					</div>
-					<div class="field">
-						<p:outputLabel for="usu_Email">E-mail</p:outputLabel>
-						<p:inputText id="usu_Email" value="#{cadUserBean.selectedUser.usu_Email}" required="true"/>
-					</div>
-					<div class="field">
-						<p:outputLabel for="usuPwd">E-mail</p:outputLabel>
-						<p:inputText type="password" id="usuPwd" value="" required="true"/>
-					</div>
-					<div class="field">
-						<p:outputLabel for="confirmPwd">E-mail</p:outputLabel>
-						<p:inputText type="password" id="confirmPwd" value="" required="true"/>
-					</div>		
-			
-				</p:outputPanel>
-				
-			
-			
-			</p:outputPanel> 
-		
-		</p:dialog>	
-	</h:form>
-	
 
 		
+
+		<h:form id="form">
+
+			<p:growl id="messages" showDetail="true" />
+
+			<p:toolbar>
+				<p:toolbarGroup>
+					<p:commandButton value="New" icon="pi pi-plus"
+						actionListener="#{cadUserBean.openNew}"
+						update=":dialog:manage-product-content"
+						oncomplete="PF('manageProductDialog').show()"
+						styleClass="ui-button-success" style="margin-right: .5rem">
+						<p:resetInput target=":dialog:manage-product-content" />
+					</p:commandButton>
+
+				</p:toolbarGroup>
+			</p:toolbar>
+
+
+			<div class="card">
+				<p:dataTable id="dt_iduser" var="dtuser" widgetVar="dtusers"
+					value="#{cadUserBean.listUser}" rowKey="#{dtuser.usu_Id}"
+					paginator="true" paginatorPosition="bottom" rows="5" size="small"
+					rowSelectMode="add" stripedRows="true" showGridlines="true"
+					resizableColumns="true">
+					<!-- 
+					Se habilitar essa funcionalidade com single vc pode selecionar apenas 1 e
+					 se for multiple pode selecionar varios ao mesmo tempo.
+					 
+					<p:column selectionMode="single" exportable="false"></p:column> 
+					-->
+
+					<p:column headerText="Codigo">
+						<h:outputText value="#{dtuser.usu_Cod}" />
+					</p:column>
+					<p:column headerText="Usuario">
+						<h:outputText value="#{dtuser.usu_Login}" />
+					</p:column>
+					<p:column headerText="Email">
+						<h:outputText value="#{dtuser.usu_Email}" />
+					</p:column>
+
+
+					<p:column>
+						<p:commandButton id="btnUpdate" icon="pi pi-pencil"
+							styleClass="edit-button  ui-button-info"
+							update=":dialog:manage-product-content"
+							oncomplete="PF('manageProductDialog').show()" process="@this">
+							<f:setPropertyActionListener value="#{dtuser}"
+								target="#{cadUserBean.selectedUser}" />
+							<p:resetInput target=":dialog:manage-product-content" />
+						</p:commandButton>
+
+
+						<p:commandButton class="ui-button-danger rounded-button"
+							icon="pi pi-trash" process="@this"
+							oncomplete="PF('deleteItemDialog').show()">
+							<f:setPropertyActionListener value="#{dtuser}"
+								target="#{cadUserBean.selectedUser}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</div>
+		</h:form>
+
+		<h:form id="dialog">
+			<p:dialog header="CADASTRO" showEffect="fade" modal="true"
+				responsive="true" widgetVar="manageProductDialog">
+				<p:outputPanel id="manage-product-content" class="ui-fluid">
+					<p:outputPanel rendered="#{not empty cadUserBean.selectedUser}">
+						<div class="field">
+							<p:outputLabel for="usu_Cod">Codigo</p:outputLabel>
+							<p:inputText id="usu_Cod"
+								value="#{cadUserBean.selectedUser.usu_Cod}" required="true" />
+						</div>
+						<div class="field">
+							<p:outputLabel for="usu_Login">Login</p:outputLabel>
+							<p:inputText id="usu_Login"
+								value="#{cadUserBean.selectedUser.usu_Login}" required="true" />
+						</div>
+						<div class="field">
+							<p:outputLabel for="usu_Email">E-mail</p:outputLabel>
+							<p:inputText id="usu_Email" type="email"
+								value="#{cadUserBean.selectedUser.usu_Email}" required="true" />
+						</div>
+						<div class="field">
+							<p:outputLabel for="pwd">Senha</p:outputLabel>
+							<p:password id="pwd"
+								value="#{cadUserBean.selectedUser.usu_Senha}" match="pwdConf"
+								required="true"></p:password>
+						</div>
+						<div class="field">
+							<p:outputLabel for="pwdConf">Confirme a Senha</p:outputLabel>
+							<p:password id="pwdConf"
+								value="#{cadUserBean.selectedUser.usu_Senha}" required="true"></p:password>
+						</div>
+					</p:outputPanel>
+
+
+				</p:outputPanel>
+				<f:facet name="footer">
+
+					<p:commandButton value="Save" icon="pi pi-check"
+						actionListener="#{cadUserBean.saveUser()}"
+						update="manage-product-content"
+						process="manage-product-content @this" />
+
+					<p:commandButton value="Cancel" icon="pi pi-times"
+						onclick="PF('manageProductDialog').hide()"
+						class="ui-button-secondary" type="button" />
+
+					<p:messages id="msgpwd" showDetail="true">
+						<p:autoUpdate />
+					</p:messages>
+
+				</f:facet>
+
+			</p:dialog>
+
+			<p:confirmDialog widgetVar="deleteItemDialog" showEffect="fade"
+				width="300" message="Deletar Usuario? #{cadUserBean.selectedUser.usu_Cod}" header="Confirm"
+				severity="warn">
+				<p:commandButton value="Yes" icon="pi pi-check"
+					actionListener="#{cadUserBean.deleteItem}" process="@this"
+					oncomplete="PF('deleteItemDialog').hide()" />
+				<p:commandButton value="No" type="button"
+					styleClass="ui-button-secondary" icon="pi pi-times"
+					onclick="PF('deleteItemDialog').hide()" />
+			</p:confirmDialog>
+
+
+		</h:form>
+
+
+
+
 	</ui:define>
 </ui:composition>

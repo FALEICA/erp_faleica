@@ -6,7 +6,8 @@ import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
-import erp_faleica.models.EstruturaSistemaModel;
+import erp_faleica.models.User;
+import erp_faleica.models.menu.EstruturaSistemaModel;
 import erp_faleica.repositorio.EstruturaSistemaDAO;
 
 @Named(value = "estSisBean")
@@ -30,7 +31,8 @@ public class EstruturaSistemaBean implements Serializable {
 	
 	public List<EstruturaSistemaModel> getFindAll(){
 		EstruturaSistemaDAO estDao = new EstruturaSistemaDAO();
-		List<EstruturaSistemaModel> list = estDao.getEstruturaSistema();
+		User user = new User();
+		List<EstruturaSistemaModel> list = estDao.getEstruturaSistema(user);
 		return list;
 		
 	}

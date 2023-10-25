@@ -12,7 +12,8 @@ import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
 
-import erp_faleica.models.EstruturaSistemaModel;
+import erp_faleica.models.User;
+import erp_faleica.models.menu.EstruturaSistemaModel;
 import erp_faleica.repositorio.EstruturaSistemaDAO;
 
 
@@ -29,8 +30,10 @@ public class MenuBean implements Serializable {
 	public MenuBean() {
 	
 		model = new DefaultMenuModel();
+		User user = new User();
+		user.setUsu_Cod(102);
 		
-		for (EstruturaSistemaModel estmodel : estDao.getEstruturaSistema()) {
+		for (EstruturaSistemaModel estmodel : estDao.getEstruturaSistema(user)) {
 			
 			
 			
@@ -42,12 +45,12 @@ public class MenuBean implements Serializable {
 					.build();
 			
 			DefaultSubMenu secondsubmenu = DefaultSubMenu.builder()
-					.label("Administração do sistema")
+					.label(estmodel.getDesc_Menu())
 					.build();
 			
 			DefaultMenuItem itens = DefaultMenuItem.builder()
-					.value("Cadastro de Usuario")
-					.url("/erp_faleica/modulos/sistema/cadastros/syscmp001cadastrousuarios.xhtml")
+					.value(estmodel.getDesc_Componente())
+					.url(estmodel.getLink_Geral())
 					.build();
 			
 			secondsubmenu.getElements().add(itens);

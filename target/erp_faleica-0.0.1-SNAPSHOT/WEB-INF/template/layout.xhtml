@@ -45,7 +45,6 @@
 		<!-- DIVISAO TOPO DA PAGINA -->
 		<div>
 			<div class="row" id="rowHeader">
-
 				<div class="col-3" id="imagemProfile">
 					<img src="/erp_faleica/img/avatartest.png" alt="avatar" 
 						style="height: 75px; width: 60px"
@@ -64,6 +63,9 @@
 						
 
 				</div>
+				
+				
+				
 			</div>
 
 		</div>
@@ -86,35 +88,14 @@
 
 			<!-- DIVISAO COLUNA DE MENUS... -->
 			<div class="col-2" id="colMenu">
-				<p:megaMenu orientation="vertical" autoDisplay="false">
-
-					<p:submenu label="SISTEMA" icon="pi pi-fw pi-pencil">
-						<p:column>
-							<p:submenu label="Administração do Sistema">
-								<p:menuitem value="Cadastro de Usuario"
-									url="/erp_faleica/modulos/sistema/cadastros/syscmp001cadastrousuarios.xhtml" />
-							</p:submenu>
-						</p:column>
-					</p:submenu>
-
-					<p:submenu label="PESSOAS" icon="pi pi-fw pi-pencil">
-						<p:column>
-							<p:submenu label="Cadastro de pessoas">
-								<p:menuitem value="cadPessoas" 
-									url="/erp_faleica/modulos/pessoas/cadpessoas/pescmp001cadastropessoas.xhtml" />
-							</p:submenu>
-						</p:column>
-					</p:submenu>
-
-				</p:megaMenu>
+				<p:megaMenu 
+					orientation="vertical" 
+					autoDisplay="false"  
+					model="#{menuBean.model}"
+				/>
 			</div>
-
-
-
-
-
-
-
+			
+			
 
 			<!-- DIVISAO COLUNA DE FUNCIONALIDADES E COMPONENTES... -->
 			<div class="col-10" id="fundoconteudo">
@@ -135,9 +116,42 @@
 		<!-- DIVISAO DO RODAPÉ DA PAGINA -->
 		<div>
 			<div class="row" id="rowFooter">
-				<div class="col-12">
-					<p>Aqui serao as informacoes do meu Footer(rodapé)</p>
+				<div class="col-3">
+					<div class="card text-center" id="cardFooter01">
+					<img class="card-img-top" src="/erp_faleica/img/logofaleicadev02.jpg" alt="cardimg" />
+						<div>
+							<p class="card-text">SIGETEXTUS é um produto produzido por Fabio Leite Cardoso, licenciado para faleicadev.com enterprise que detêm todos os direitos da marca.</p>
+							<p class="card-text-phone">Contato: (79) 9 9921-6101 </p>
+							<p class="card-text-email">E-mail: <a href="#">fabio.leite.cardoso@gmail.com</a> </p>
+						
+						</div>
+					</div>
 				</div>
+				<div class="col-3">
+					<div class="card text-center" id="cardFooter02">
+					<img class="card-img-top" src="#" alt="cardimg" />
+						<div>
+							<h5>New Card</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card text-center" id="cardFooter03">
+					<img class="card-img-top" src="#" alt="cardimg" />
+						<div>
+							<h5>New Card</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col-3">
+					<div class="card text-center" id="cardFooter04">
+					<img class="card-img-top" src="#" alt="cardimg" />
+						<div>
+							<h5>New Card</h5>
+						</div>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 

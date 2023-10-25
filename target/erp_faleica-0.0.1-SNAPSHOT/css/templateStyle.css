@@ -1,6 +1,17 @@
+button.ui-button {
+	margin-right: 1rem;
+	align-items: center;
+}
+
+
 body {
-	margin: 10px;
+	margin: 0px;
+	padding: 0;
 	background-color: #000000;
+}
+.container-fluid{
+	margin: 0;
+	padding: 0;
 }	
 
 
@@ -13,15 +24,24 @@ body {
 }
 
 #colMenu {
-	background-color: #f1f1f1;
+	background-color: #1c1c1c;
 }
 
 #rowHeader {
-	background-color: #191970;
+	background-image: url("../img/header01.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 70px;
+	margin: 0;
+	padding: 0;
 }
 
 #rowFooter {
-	background-color: #0000FF;
+	background-color: #1c1c1c;
+	color: #FFFFFF;
+
 }
 
 #TituloSistema {
@@ -58,54 +78,40 @@ body {
 
 }
 
-#rowFooter {
-	color: #FFFF00;
-}
-
-
-#divTabela{
-	margin-top: 20px;
-}
 
 
 
 
 
-.order-table{   
-	border-collapse:collapse;
+#cardFooter01,
+#cardFooter02,
+#cardFooter03,
+#cardFooter04{
+	background-color: #1c1c1c;
+	color: #FFFFFF;
+	align-content: center;
+	border-radius: 6px;
+	border-color: #6959CD;
+	margin: 5px;
+	padding: 5px;
+	height: 90%;
 	
-	
-}
-
-.order-table-header{
-	text-align:center;
-	background:none repeat scroll 0 0 #E5E5E5;
-	border:1px dotted #000000;
-	padding:16px;
 	
 	
 }
 
-.order-table-odd-row{	
-	background-color: #BBBBBB;
-	border: 1px dotted #000000;
-	color: #191970;
-	
-	
+.card-img-top{	
+	height:50px;
+	background-position: center;
+	background-size: cover;
+	margin-bottom: 5px;
+		
 }
 
-.order-table-even-row{	
-	background-color: #ffffff;
-	border: 1px dotted #000000;
-	color: #191970;
-	
-	
+.card-text{
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFAFA;
 }
 
-.c1,.c2,.c3,.c4
-{
-	border: 1px dotted #000000;
-}
-			
-			
 			

@@ -11,7 +11,7 @@ SELECT
     md.modulo_link,
     mn.menu_Link,
     cp.compo_Link,
-    CONCAT(md.modulo_link,
+    CONCAT('/erp_faleica/modulos/', md.modulo_link,
             '/',
             mn.menu_Link,
             '/',
