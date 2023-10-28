@@ -3,9 +3,7 @@ package erp_faleica.applicationlocal;
 import java.io.Serializable;
 
 import erp_faleica.models.User;
-import erp_faleica.models.menu.EstruturaSistemaModel;
-import erp_faleica.models.menu.MenuModulos;
-import erp_faleica.repositorio.EstruturaSistemaDAO;
+import erp_faleica.repositorio.UserDAO;
 
 public class ApplicationTest implements Serializable {
 
@@ -14,15 +12,12 @@ public class ApplicationTest implements Serializable {
 
 	public static void main(String[] args) {
 			
-		EstruturaSistemaDAO dao = new EstruturaSistemaDAO();
-		User user = new User();
-		user.setUsu_Cod(159);
+		User us = new User();
+		us.setUsu_Cod(159);
 		
-		for (EstruturaSistemaModel	model : dao.getEstruturaSistema(user)) {
-			System.out.println(model.getLink_Geral());
-			
-		}		
-
+		UserDAO usdao = new UserDAO();
+		
+		System.out.println(usdao.getUserAll());
 	}
 
 }

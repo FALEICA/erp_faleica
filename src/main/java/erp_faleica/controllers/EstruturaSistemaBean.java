@@ -32,6 +32,7 @@ public class EstruturaSistemaBean implements Serializable {
 	public List<EstruturaSistemaModel> getFindAll(){
 		EstruturaSistemaDAO estDao = new EstruturaSistemaDAO();
 		User user = new User();
+		user.setUsu_Cod(159);
 		List<EstruturaSistemaModel> list = estDao.getEstruturaSistema(user);
 		return list;
 		

@@ -8,7 +8,7 @@
 
 	<ui:define name="conteudo">
 
-		
+
 
 		<h:form id="form">
 
@@ -50,6 +50,9 @@
 					<p:column headerText="Email">
 						<h:outputText value="#{dtuser.usu_Email}" />
 					</p:column>
+					<p:column headerText="Perfil">
+						<img src="#{dtuser.usu_img}" alt="S/F" style="width: 30px; height: 40px" />
+					</p:column>
 
 
 					<p:column>
@@ -62,49 +65,179 @@
 							<p:resetInput target=":dialog:manage-product-content" />
 						</p:commandButton>
 
-
 						<p:commandButton class="ui-button-danger rounded-button"
 							icon="pi pi-trash" process="@this"
 							oncomplete="PF('deleteItemDialog').show()">
 							<f:setPropertyActionListener value="#{dtuser}"
 								target="#{cadUserBean.selectedUser}" />
 						</p:commandButton>
+
+						<p:commandButton id="btnPermissons" icon="pi pi-pencil"
+							value="permissoes"
+							class="edit-button  ui-button-info rounded-button"
+							update=":dialogPermissons:manege-permission-content"
+							oncomplete="PF('managePermissionDialog').show()" process="@this">
+							<f:setPropertyActionListener value="#{dtuser}"
+								target="#{cadUserBean.selectedUser}" />
+							<p:resetInput
+								target=":dialogPermissons:manege-permission-content" />
+						</p:commandButton>
+
 					</p:column>
 				</p:dataTable>
+
+
 			</div>
 		</h:form>
 
+		<h:form id="dialogPermissons">
+			<p:dialog header="PERMISSOES DO USUARIO" showEffect="fade"
+				modal="true" responsive="true" widgetVar="managePermissionDialog"
+				width="70%">
+				<p:outputPanel id="manege-permission-content" class="ui-fluid">
+					<p:outputPanel rendered="#{not empty cadUserBean.selectedUser}">
+
+						<p:card>
+							<f:facet name="header">
+								<div class="container-fluid" style="margin:10px; padding: 10px">
+									<div class="row" style="margin:10px; padding:10px">
+										<div class="col-3">
+											<div class="container" style="margin:5px; padding:5px;">
+												<div class="row" style="margin-bottom:5px">
+													<img src="#{cadUserBean.selectedUser.usu_img}" alt="SEM FOTO"
+														id="imgProfileCard" />
+												</div>
+												<div class="row">
+													<p>CODIGO: #{cadUserBean.selectedUser.usu_Cod}</p>
+													<p>LOGIN: #{cadUserBean.selectedUser.usu_Login}</p>
+													<p>EMAIL: #{cadUserBean.selectedUser.usu_Email}</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-9">
+											<p:dataTable id="dt_idaccess" var="acces"
+												widgetVar="dtaccess" value="#{cadUserBean.userAcess}"
+												rowKey="#{acces.link_Geral}" paginator="true"
+												paginatorPosition="bottom" rows="8" size="small"
+												rowSelectMode="add" stripedRows="true" showGridlines="true"
+												resizableColumns="true" reflow="true"
+												emptyMessage="Nao existe registros de acessos para o usuario.">
+
+												<p:column headerText="Sigla" responsivePriority="1"
+													width="90px">
+													<h:outputText value="#{acces.sigla_Component}" />
+												</p:column>
+												<p:column headerText="Componente" responsivePriority="2"
+													>
+													<h:outputText value="#{acces.desc_Componente}" />
+												</p:column>
+												<p:column headerText="Módulo" responsivePriority="3"
+													width="90px">
+													<h:outputText value="#{acces.desc_Modulo}" />
+												</p:column>
+												<p:column headerText="Cons" responsivePriority="4"
+													width="30px">
+													<p:selectBooleanCheckbox value="#{acces.usc_Select}"/>
+												</p:column>
+												<p:column headerText="Incl" responsivePriority="5"
+													width="30px">
+													<p:selectBooleanCheckbox value="#{acces.usc_Insert}"/>													
+												</p:column>
+												<p:column headerText="Alt" responsivePriority="6"
+													width="30px">
+													<p:selectBooleanCheckbox value="#{acces.usc_Update}"/>
+												</p:column>
+												<p:column headerText="Excl" responsivePriority="7"
+													width="30px">
+													<p:selectBooleanCheckbox value="#{acces.usc_Delete}"/>
+												</p:column>
+											</p:dataTable>
+
+
+										</div>
+									</div>
+								</div>
+							</f:facet>
+
+
+						</p:card>
+
+
+
+
+					</p:outputPanel>
+
+
+				</p:outputPanel>
+				<f:facet name="footer">
+
+					<p:commandButton value="Save" icon="pi pi-check" actionListener="#"
+						update="manege-permission-content"
+						process="manege-permission-content @this" />
+
+					<p:commandButton value="Cancel" icon="pi pi-times"
+						onclick="PF('managePermissionDialog').hide()"
+						class="ui-button-secondary" type="button" />
+
+					<p:messages id="msgpwd" showDetail="true">
+						<p:autoUpdate />
+					</p:messages>
+
+				</f:facet>
+
+			</p:dialog>
+
+		</h:form>
+
+
+
+
+
+
+
 		<h:form id="dialog">
-			<p:dialog header="CADASTRO" showEffect="fade" modal="true"
-				responsive="true" widgetVar="manageProductDialog">
+			<p:dialog header="USUARIO" showEffect="fade" modal="true"
+				responsive="true" widgetVar="manageProductDialog" width="30%">
 				<p:outputPanel id="manage-product-content" class="ui-fluid">
 					<p:outputPanel rendered="#{not empty cadUserBean.selectedUser}">
-						<div class="field">
-							<p:outputLabel for="usu_Cod">Codigo</p:outputLabel>
-							<p:inputText id="usu_Cod"
-								value="#{cadUserBean.selectedUser.usu_Cod}" required="true" />
+						<div class="row justify-content-md-center">
+							<div class="col-md-6">
+								<div class="field">
+									<p:outputLabel for="usu_Cod">Codigo</p:outputLabel>
+									<p:inputText id="usu_Cod"
+										value="#{cadUserBean.selectedUser.usu_Cod}" required="true" />
+								</div>
+								<div class="field">
+									<p:outputLabel for="usu_Login">Login</p:outputLabel>
+									<p:inputText id="usu_Login"
+										value="#{cadUserBean.selectedUser.usu_Login}" required="true" />
+								</div>
+								<div class="field">
+									<p:outputLabel for="usu_Email">E-mail</p:outputLabel>
+									<p:inputText id="usu_Email" type="email"
+										value="#{cadUserBean.selectedUser.usu_Email}" required="true" />
+								</div>
+								<div class="field">
+									<p:outputLabel for="pwd">Senha</p:outputLabel>
+									<p:password id="pwd"
+										value="#{cadUserBean.selectedUser.usu_Senha}" match="pwdConf"
+										required="true"></p:password>
+								</div>
+								<div class="field">
+									<p:outputLabel for="pwdConf">Confirme a Senha</p:outputLabel>
+									<p:password id="pwdConf"
+										value="#{cadUserBean.selectedUser.usu_Senha}" required="true"></p:password>
+								</div>
+
+
+							</div>
+
+
+
 						</div>
-						<div class="field">
-							<p:outputLabel for="usu_Login">Login</p:outputLabel>
-							<p:inputText id="usu_Login"
-								value="#{cadUserBean.selectedUser.usu_Login}" required="true" />
-						</div>
-						<div class="field">
-							<p:outputLabel for="usu_Email">E-mail</p:outputLabel>
-							<p:inputText id="usu_Email" type="email"
-								value="#{cadUserBean.selectedUser.usu_Email}" required="true" />
-						</div>
-						<div class="field">
-							<p:outputLabel for="pwd">Senha</p:outputLabel>
-							<p:password id="pwd"
-								value="#{cadUserBean.selectedUser.usu_Senha}" match="pwdConf"
-								required="true"></p:password>
-						</div>
-						<div class="field">
-							<p:outputLabel for="pwdConf">Confirme a Senha</p:outputLabel>
-							<p:password id="pwdConf"
-								value="#{cadUserBean.selectedUser.usu_Senha}" required="true"></p:password>
-						</div>
+
+
+						<div class="row"></div>
 					</p:outputPanel>
 
 
@@ -126,11 +259,16 @@
 
 				</f:facet>
 
+
+
 			</p:dialog>
 
+
+
 			<p:confirmDialog widgetVar="deleteItemDialog" showEffect="fade"
-				width="300" message="Deletar Usuario? #{cadUserBean.selectedUser.usu_Cod}" header="Confirm"
-				severity="warn">
+				width="300"
+				message="Deletar Usuario? #{cadUserBean.selectedUser.usu_Cod}"
+				header="Confirm" severity="warn">
 				<p:commandButton value="Yes" icon="pi pi-check"
 					actionListener="#{cadUserBean.deleteItem}" process="@this"
 					oncomplete="PF('deleteItemDialog').hide()" />
@@ -140,9 +278,9 @@
 			</p:confirmDialog>
 
 
+
+
 		</h:form>
-
-
 
 
 	</ui:define>

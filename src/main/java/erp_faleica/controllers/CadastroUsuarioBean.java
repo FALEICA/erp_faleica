@@ -1,6 +1,8 @@
 package erp_faleica.controllers;
 
+import java.awt.MenuComponent;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -12,6 +14,9 @@ import javax.inject.Named;
 import org.primefaces.PrimeFaces;
 
 import erp_faleica.models.User;
+import erp_faleica.models.UserAccess;
+import erp_faleica.models.menu.MenuMenus;
+import erp_faleica.models.menu.MenuModulos;
 import erp_faleica.models.messages.MensagensDoSistema;
 import erp_faleica.repositorio.UserDAO;
 
@@ -22,19 +27,38 @@ public class CadastroUsuarioBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
-	private static User selectedUser;	
+	private static User selectedUser;
+	private static MenuModulos modulos;
+	private static MenuMenus menus;
+	private static MenuComponent componentes;
 	private List<User> listUser;
+	private static List<UserAccess> userAcess;
 	
 	
 	@Inject
 	UserDAO userdao;
-
+	
+	
+	
+	
 	public void addMessage(FacesMessage.Severity severity, String summary, String detail) {
         FacesContext.getCurrentInstance().
                 addMessage(null, new FacesMessage(severity, summary, detail));
     }
-
-
+	
+	public List<UserAccess> getUserAcess() {
+		if(selectedUser.getUsu_Cod() != null) {
+			CadastroUsuarioBean.userAcess = userdao.getUserAccess(selectedUser);
+		} else {
+			CadastroUsuarioBean.userAcess = new  ArrayList<UserAccess>();
+		}
+		return userAcess;
+	}
+	
+	public void setUserAcess(List<UserAccess> userAcess) {
+		CadastroUsuarioBean.userAcess = userAcess;
+	}
+	
 	public List<User> getListUser() {
 		this.listUser = userdao.getUserAll();
 		return listUser;
@@ -47,7 +71,37 @@ public class CadastroUsuarioBean implements Serializable {
 	public User getSelectedUser() {		
 		return selectedUser;
 	}
+	
 
+	public static MenuModulos getModulos() {
+		return modulos;
+	}
+
+
+	public static void setModulos(MenuModulos modulos) {
+		CadastroUsuarioBean.modulos = modulos;
+	}
+
+
+	public static MenuMenus getMenus() {
+		return menus;
+	}
+
+
+	public static void setMenus(MenuMenus menus) {
+		CadastroUsuarioBean.menus = menus;
+	}
+
+
+	public static MenuComponent getComponentes() {
+		return componentes;
+	}
+
+
+	public static void setComponentes(MenuComponent componentes) {
+		CadastroUsuarioBean.componentes = componentes;
+	}
+	
 	
 	public void setSelectedUser(User selectedUser) {
 		CadastroUsuarioBean.selectedUser = selectedUser;
@@ -75,8 +129,12 @@ public class CadastroUsuarioBean implements Serializable {
 	
 	
 	
+	
 	public void openNew() {
+		System.out.println("entrou em openNew");
 		CadastroUsuarioBean.selectedUser = new User();
+	
+		
 	}
 	
 	

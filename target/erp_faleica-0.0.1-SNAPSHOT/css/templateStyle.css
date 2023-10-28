@@ -5,7 +5,7 @@ button.ui-button {
 
 
 body {
-	margin: 0px;
+	margin: 15px;
 	padding: 0;
 	background-color: #000000;
 }
@@ -90,8 +90,6 @@ body {
 	background-color: #1c1c1c;
 	color: #FFFFFF;
 	align-content: center;
-	border-radius: 6px;
-	border-color: #6959CD;
 	margin: 5px;
 	padding: 5px;
 	height: 90%;
@@ -108,10 +106,10 @@ body {
 		
 }
 
-.card-text{
-	font-size: 10px;
-	font-weight: bold;
-	color: #FFFAFA;
+#imgProfileCard{
+	width: 100px;
+	height: 120px;
 }
+
 
 			

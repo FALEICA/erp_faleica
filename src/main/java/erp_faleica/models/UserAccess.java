@@ -6,160 +6,264 @@ import java.util.Objects;
 
 public class UserAccess implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;	
-	private Integer usc_Id;
-	private Integer usu_CodNumber;
-	private Integer modulo_CodNumber;
-	private Integer menu_CodNumber;
-	private Integer compo_CodNumber;
-	private Date dta_Incl;
-	private Date dta_Alter;
-	private Integer usu_Incl;
-	private Integer usu_Alter;
 	
+	private static final long serialVersionUID = 1L;
+	
+	private	Integer	usu_Id	;
+	private	Integer	usu_Cod	;
+	private	Integer	cod_Modulo	;
+	private	String	sigla_Modulo	;
+	private	String	desc_Modulo	;
+	private	String	link_Modulo	;
+	private	Integer	cod_Menu	;
+	private	String	sigla_Menu	;
+	private	String	desc_Menu	;
+	private	String	link_Menu	;
+	private	Integer	cod_Componente	;
+	private	String	sigla_Component	;
+	private	String	desc_Componente	;
+	private	String	link_Componente	;
+	private	Boolean	usc_Select	;
+	private	Boolean	usc_Insert	;
+	private	Boolean	usc_Update	;
+	private	Boolean	usc_Delete	;
+	private	String	link_Geral	;
+
 	
 	public UserAccess() {
-		
-		
+		// TODO Auto-generated constructor stub
 	}
 
 
-	public UserAccess(Integer usc_Id, Integer usu_CodNumber, Integer modulo_CodNumber, Integer menu_CodNumber,
-			Integer compo_CodNumber, Date dta_Incl, Date dta_Alter, Integer usu_Incl, Integer usu_Alter) {
+	public UserAccess(Integer usu_Id, Integer usu_Cod, Integer cod_Modulo, String sigla_Modulo, String desc_Modulo,
+			String link_Modulo, Integer cod_Menu, String sigla_Menu, String desc_Menu, String link_Menu,
+			Integer cod_Componente, String sigla_Component, String desc_Componente, String link_Componente,
+			Boolean usc_Select, Boolean usc_Insert, Boolean usc_Update, Boolean usc_Delete, String link_Geral) {
 		super();
-		this.usc_Id = usc_Id;
-		this.usu_CodNumber = usu_CodNumber;
-		this.modulo_CodNumber = modulo_CodNumber;
-		this.menu_CodNumber = menu_CodNumber;
-		this.compo_CodNumber = compo_CodNumber;
-		this.dta_Incl = dta_Incl;
-		this.dta_Alter = dta_Alter;
-		this.usu_Incl = usu_Incl;
-		this.usu_Alter = usu_Alter;
+		this.usu_Id = usu_Id;
+		this.usu_Cod = usu_Cod;
+		this.cod_Modulo = cod_Modulo;
+		this.sigla_Modulo = sigla_Modulo;
+		this.desc_Modulo = desc_Modulo;
+		this.link_Modulo = link_Modulo;
+		this.cod_Menu = cod_Menu;
+		this.sigla_Menu = sigla_Menu;
+		this.desc_Menu = desc_Menu;
+		this.link_Menu = link_Menu;
+		this.cod_Componente = cod_Componente;
+		this.sigla_Component = sigla_Component;
+		this.desc_Componente = desc_Componente;
+		this.link_Componente = link_Componente;
+		this.usc_Select = usc_Select;
+		this.usc_Insert = usc_Insert;
+		this.usc_Update = usc_Update;
+		this.usc_Delete = usc_Delete;
+		this.link_Geral = link_Geral;
 	}
 
 
-	public Integer getUsc_Id() {
-		return usc_Id;
+	public Integer getUsu_Id() {
+		return usu_Id;
 	}
 
 
-	public void setUsc_Id(Integer usc_Id) {
-		this.usc_Id = usc_Id;
+	public void setUsu_Id(Integer usu_Id) {
+		this.usu_Id = usu_Id;
 	}
 
 
-	public Integer getUsu_CodNumber() {
-		return usu_CodNumber;
+	public Integer getUsu_Cod() {
+		return usu_Cod;
 	}
 
 
-	public void setUsu_CodNumber(Integer usu_CodNumber) {
-		this.usu_CodNumber = usu_CodNumber;
+	public void setUsu_Cod(Integer usu_Cod) {
+		this.usu_Cod = usu_Cod;
 	}
 
 
-	public Integer getModulo_CodNumber() {
-		return modulo_CodNumber;
+	public Integer getCod_Modulo() {
+		return cod_Modulo;
 	}
 
 
-	public void setModulo_CodNumber(Integer modulo_CodNumber) {
-		this.modulo_CodNumber = modulo_CodNumber;
+	public void setCod_Modulo(Integer cod_Modulo) {
+		this.cod_Modulo = cod_Modulo;
 	}
 
 
-	public Integer getMenu_CodNumber() {
-		return menu_CodNumber;
+	public String getSigla_Modulo() {
+		return sigla_Modulo;
 	}
 
 
-	public void setMenu_CodNumber(Integer menu_CodNumber) {
-		this.menu_CodNumber = menu_CodNumber;
+	public void setSigla_Modulo(String sigla_Modulo) {
+		this.sigla_Modulo = sigla_Modulo;
 	}
 
 
-	public Integer getCompo_CodNumber() {
-		return compo_CodNumber;
+	public String getDesc_Modulo() {
+		return desc_Modulo;
 	}
 
 
-	public void setCompo_CodNumber(Integer compo_CodNumber) {
-		this.compo_CodNumber = compo_CodNumber;
+	public void setDesc_Modulo(String desc_Modulo) {
+		this.desc_Modulo = desc_Modulo;
 	}
 
 
-	public Date getDta_Incl() {
-		return dta_Incl;
+	public String getLink_Modulo() {
+		return link_Modulo;
 	}
 
 
-	public void setDta_Incl(Date dta_Incl) {
-		this.dta_Incl = dta_Incl;
+	public void setLink_Modulo(String link_Modulo) {
+		this.link_Modulo = link_Modulo;
 	}
 
 
-	public Date getDta_Alter() {
-		return dta_Alter;
+	public Integer getCod_Menu() {
+		return cod_Menu;
 	}
 
 
-	public void setDta_Alter(Date dta_Alter) {
-		this.dta_Alter = dta_Alter;
+	public void setCod_Menu(Integer cod_Menu) {
+		this.cod_Menu = cod_Menu;
 	}
 
 
-	public Integer getUsu_Incl() {
-		return usu_Incl;
+	public String getSigla_Menu() {
+		return sigla_Menu;
 	}
 
 
-	public void setUsu_Incl(Integer usu_Incl) {
-		this.usu_Incl = usu_Incl;
+	public void setSigla_Menu(String sigla_Menu) {
+		this.sigla_Menu = sigla_Menu;
 	}
 
 
-	public Integer getUsu_Alter() {
-		return usu_Alter;
+	public String getDesc_Menu() {
+		return desc_Menu;
 	}
 
 
-	public void setUsu_Alter(Integer usu_Alter) {
-		this.usu_Alter = usu_Alter;
+	public void setDesc_Menu(String desc_Menu) {
+		this.desc_Menu = desc_Menu;
 	}
 
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(usc_Id);
+	public String getLink_Menu() {
+		return link_Menu;
 	}
 
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		UserAccess other = (UserAccess) obj;
-		return Objects.equals(usc_Id, other.usc_Id);
+	public void setLink_Menu(String link_Menu) {
+		this.link_Menu = link_Menu;
+	}
+
+
+	public Integer getCod_Componente() {
+		return cod_Componente;
+	}
+
+
+	public void setCod_Componente(Integer cod_Componente) {
+		this.cod_Componente = cod_Componente;
+	}
+
+
+	public String getSigla_Component() {
+		return sigla_Component;
+	}
+
+
+	public void setSigla_Component(String sigla_Component) {
+		this.sigla_Component = sigla_Component;
+	}
+
+
+	public String getDesc_Componente() {
+		return desc_Componente;
+	}
+
+
+	public void setDesc_Componente(String desc_Componente) {
+		this.desc_Componente = desc_Componente;
+	}
+
+
+	public String getLink_Componente() {
+		return link_Componente;
+	}
+
+
+	public void setLink_Componente(String link_Componente) {
+		this.link_Componente = link_Componente;
+	}
+
+
+	public Boolean getUsc_Select() {
+		return usc_Select;
+	}
+
+
+	public void setUsc_Select(Boolean usc_Select) {
+		this.usc_Select = usc_Select;
+	}
+
+
+	public Boolean getUsc_Insert() {
+		return usc_Insert;
+	}
+
+
+	public void setUsc_Insert(Boolean usc_Insert) {
+		this.usc_Insert = usc_Insert;
+	}
+
+
+	public Boolean getUsc_Update() {
+		return usc_Update;
+	}
+
+
+	public void setUsc_Update(Boolean usc_Update) {
+		this.usc_Update = usc_Update;
+	}
+
+
+	public Boolean getUsc_Delete() {
+		return usc_Delete;
+	}
+
+
+	public void setUsc_Delete(Boolean usc_Delete) {
+		this.usc_Delete = usc_Delete;
+	}
+
+
+	public String getLink_Geral() {
+		return link_Geral;
+	}
+
+
+	public void setLink_Geral(String link_Geral) {
+		this.link_Geral = link_Geral;
 	}
 
 
 	@Override
 	public String toString() {
-		return "UserAccess [usc_Id=" + usc_Id + ", usu_CodNumber=" + usu_CodNumber + ", modulo_CodNumber="
-				+ modulo_CodNumber + ", menu_CodNumber=" + menu_CodNumber + ", compo_CodNumber=" + compo_CodNumber
-				+ ", dta_Incl=" + dta_Incl + ", dta_Alter=" + dta_Alter + ", usu_Incl=" + usu_Incl + ", usu_Alter="
-				+ usu_Alter + "]";
+		return "UserAccess [usu_Id=" + usu_Id + ", usu_Cod=" + usu_Cod + ", cod_Modulo=" + cod_Modulo
+				+ ", sigla_Modulo=" + sigla_Modulo + ", desc_Modulo=" + desc_Modulo + ", link_Modulo=" + link_Modulo
+				+ ", cod_Menu=" + cod_Menu + ", sigla_Menu=" + sigla_Menu + ", desc_Menu=" + desc_Menu + ", link_Menu="
+				+ link_Menu + ", cod_Componente=" + cod_Componente + ", sigla_Component=" + sigla_Component
+				+ ", desc_Componente=" + desc_Componente + ", link_Componente=" + link_Componente + ", usc_Select="
+				+ usc_Select + ", usc_Insert=" + usc_Insert + ", usc_Update=" + usc_Update + ", usc_Delete="
+				+ usc_Delete + ", link_Geral=" + link_Geral + "]";
 	}
-	
-	
+
+
 	
 
 }

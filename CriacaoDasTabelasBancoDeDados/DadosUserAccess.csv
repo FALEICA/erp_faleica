@@ -1,0 +1,5 @@
+usu_Id;usu_Cod;cod_Modulo;sigla_Modulo;desc_Modulo;link_Modulo;cod_Menu;sigla_Menu;desc_Menu;link_Menu;cod_Componente;sigla_Component;desc_Componente;link_Componente;usc_Select;usc_Insert;usc_Update;usc_Delete;link_Geral
+1;159;1;SYS;SISTEMA;sistema;1;SYSCAD;"Sistema Cadastros";cadastros;1;SYSCMP001;"Cadastro de Usuarios";syscmp001cadastrousuarios;1;1;1;1;/erp_faleica/modulos/sistema/cadastros/syscmp001cadastrousuarios.xhtml
+1;159;2;PES;PESSOAS;pessoas;3;PESCAD;"Pessoas Cadastros";cadpessoas;2;PESCMP001;"Cadastro de Pessoas";pescmp001cadastropessoas;1;1;1;1;/erp_faleica/modulos/pessoas/cadpessoas/pescmp001cadastropessoas.xhtml
+1;159;2;PES;PESSOAS;pessoas;3;PESCAD;"Pessoas Cadastros";cadpessoas;3;PESCMP002;"Cadastro de Curriculos";pescmp002cadastrocurriculos;1;1;1;1;/erp_faleica/modulos/pessoas/cadpessoas/pescmp002cadastrocurriculos.xhtml
+1;159;7;PRD;PRODUTOS;produtos;4;PRDCAD;"Produtos Cadastros";cadprodutos;4;PRDCMP001;"Cadastro de Produtos";prdcmp001cadastroprodutos;1;1;1;1;/erp_faleica/modulos/produtos/cadprodutos/prdcmp001cadastroprodutos.xhtml

@@ -1,4 +1,3 @@
-USE erp_faleica;
 SELECT
 us.usu_Id,
 us.usu_Cod,
