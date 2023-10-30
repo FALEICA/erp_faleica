@@ -32,7 +32,7 @@ public class ConexaoBancoDados implements Serializable {
 			
 			
 			this.conn = DriverManager.getConnection(
-					"jdbc:mysql://192.168.1.10:3306/erp_faleica?useSSL=FALSE&serverTimezone=UTC", 
+					"jdbc:mysql://192.168.1.4:3306/erp_faleica?useSSL=FALSE&serverTimezone=UTC", 
 					"developer",
 					"#$Iptw3tko");
 		} catch (SQLException e) {

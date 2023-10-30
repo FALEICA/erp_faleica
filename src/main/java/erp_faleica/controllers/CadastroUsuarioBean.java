@@ -26,7 +26,7 @@ public class CadastroUsuarioBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	
+	private	static User newUser = new User();
 	private static User selectedUser;
 	private static MenuModulos modulos;
 	private static MenuMenus menus;
@@ -102,7 +102,14 @@ public class CadastroUsuarioBean implements Serializable {
 		CadastroUsuarioBean.componentes = componentes;
 	}
 	
-	
+	public static User getNewUser() {
+		return newUser;
+	}
+
+	public static void setNewUser(User newUser) {
+		CadastroUsuarioBean.newUser = newUser;
+	}
+
 	public void setSelectedUser(User selectedUser) {
 		CadastroUsuarioBean.selectedUser = selectedUser;
 	}
@@ -114,14 +121,14 @@ public class CadastroUsuarioBean implements Serializable {
 		}
 		MensagensDoSistema msg = userdao.saveUser(selectedUser);
 		if(msg.getTypeMessage() == 1) {
-			addMessage(FacesMessage.SEVERITY_INFO, "ERROR!", msg.getWriteMessage());
+			addMessage(FacesMessage.SEVERITY_INFO, "SUCESSO!", msg.getWriteMessage());
 		}
 		if(msg.getTypeMessage() == 2) {
-			addMessage(FacesMessage.SEVERITY_WARN, "ERROR!", msg.getWriteMessage());
+			addMessage(FacesMessage.SEVERITY_WARN, "ATENCÃO!", msg.getWriteMessage());
 			
 		}
 		if(msg.getTypeMessage() == 3) {
-			addMessage(FacesMessage.SEVERITY_ERROR, "ERROR!", msg.getWriteMessage());
+			addMessage(FacesMessage.SEVERITY_ERROR, "ERRO!", msg.getWriteMessage());
 		}
 		
 		PrimeFaces.current().ajax().update("form:messages", "form:dt_iduser");
@@ -131,8 +138,17 @@ public class CadastroUsuarioBean implements Serializable {
 	
 	
 	public void openNew() {
-		System.out.println("entrou em openNew");
-		CadastroUsuarioBean.selectedUser = new User();
+		
+		if(newUser.getUsu_img() == null) {
+			System.out.println("entrou em openNew");
+			CadastroUsuarioBean.newUser.setUsu_img("../Users/fabio/Desktop/erpfaleica/system/images/Fabio.jpg");
+			System.out.println("SEM IMAGEM: "+newUser.getUsu_img());
+		}else {
+			System.out.println("COM IMAGEM: "+newUser.getUsu_img());
+		}
+		
+		
+		CadastroUsuarioBean.selectedUser = CadastroUsuarioBean.newUser;
 	
 		
 	}

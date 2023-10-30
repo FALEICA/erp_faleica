@@ -13,7 +13,6 @@
 		<h:form id="form">
 
 			<p:growl id="messages" showDetail="true" />
-
 			<p:toolbar>
 				<p:toolbarGroup>
 					<p:commandButton value="New" icon="pi pi-plus"
@@ -50,13 +49,15 @@
 					<p:column headerText="Email">
 						<h:outputText value="#{dtuser.usu_Email}" />
 					</p:column>
-					<p:column headerText="Perfil" width="60px" style="text-align: center">
-						<img src="#{dtuser.usu_img}" alt="S/F" style="width: 40px; height: 50px" />
+					<p:column headerText="Perfil" width="60px"
+						style="text-align: center">
+						<img src="#{dtuser.usu_img}" alt="S/F"
+							style="width: 30px; height: 40px" />
 					</p:column>
 
 
 					<p:column width="300px" style="text-align:center">
-						<p:commandButton id="btnUpdate" icon="pi pi-pencil"
+						<p:commandButton id="btnUpdate" icon="pi pi-user-edit"
 							styleClass="edit-button  ui-button-info"
 							update=":dialog:manage-product-content"
 							oncomplete="PF('manageProductDialog').show()" process="@this">
@@ -72,9 +73,8 @@
 								target="#{cadUserBean.selectedUser}" />
 						</p:commandButton>
 
-						<p:commandButton id="btnPermissons" icon="pi pi-pencil"
-							value="permissoes"
-							class="edit-button  ui-button-info rounded-button"
+						<p:commandButton id="btnPermissons" icon="pi pi-wrench"
+							class="edit-button  ui-button-warning rounded-button"
 							update=":dialogPermissons:manege-permission-content"
 							oncomplete="PF('managePermissionDialog').show()" process="@this">
 							<f:setPropertyActionListener value="#{dtuser}"
@@ -99,13 +99,13 @@
 
 						<p:card>
 							<f:facet name="header">
-								<div class="container-fluid" style="margin:10px; padding: 10px">
-									<div class="row" style="margin:10px; padding:10px">
+								<div class="container-fluid" style="margin: 10px; padding: 10px">
+									<div class="row" style="margin: 10px; padding: 10px">
 										<div class="col-3">
-											<div class="container" style="margin:5px; padding:5px;">
-												<div class="row" style="margin-bottom:5px">
-													<img src="#{cadUserBean.selectedUser.usu_img}" alt="SEM FOTO"
-														id="imgProfileCard" />
+											<div class="container" style="margin: 5px; padding: 5px;">
+												<div class="row" style="margin-bottom: 5px">
+													<img src="#{cadUserBean.selectedUser.usu_img}"
+														alt="SEM FOTO" id="imgProfileCard" />
 												</div>
 												<div class="row">
 													<p>CODIGO: #{cadUserBean.selectedUser.usu_Cod}</p>
@@ -127,8 +127,7 @@
 													width="90px">
 													<h:outputText value="#{acces.sigla_Component}" />
 												</p:column>
-												<p:column headerText="Componente" responsivePriority="2"
-													>
+												<p:column headerText="Componente" responsivePriority="2">
 													<h:outputText value="#{acces.desc_Componente}" />
 												</p:column>
 												<p:column headerText="Módulo" responsivePriority="3"
@@ -137,19 +136,19 @@
 												</p:column>
 												<p:column headerText="Cons" responsivePriority="4"
 													width="30px">
-													<p:selectBooleanCheckbox value="#{acces.usc_Select}"/>
+													<p:selectBooleanCheckbox value="#{acces.usc_Select}" />
 												</p:column>
 												<p:column headerText="Incl" responsivePriority="5"
 													width="30px">
-													<p:selectBooleanCheckbox value="#{acces.usc_Insert}"/>													
+													<p:selectBooleanCheckbox value="#{acces.usc_Insert}" />
 												</p:column>
 												<p:column headerText="Alt" responsivePriority="6"
 													width="30px">
-													<p:selectBooleanCheckbox value="#{acces.usc_Update}"/>
+													<p:selectBooleanCheckbox value="#{acces.usc_Update}" />
 												</p:column>
 												<p:column headerText="Excl" responsivePriority="7"
 													width="30px">
-													<p:selectBooleanCheckbox value="#{acces.usc_Delete}"/>
+													<p:selectBooleanCheckbox value="#{acces.usc_Delete}" />
 												</p:column>
 											</p:dataTable>
 
@@ -197,46 +196,77 @@
 
 		<h:form id="dialog">
 			<p:dialog header="USUARIO" showEffect="fade" modal="true"
-				responsive="true" widgetVar="manageProductDialog" width="30%">
+				responsive="true" widgetVar="manageProductDialog">
 				<p:outputPanel id="manage-product-content" class="ui-fluid">
 					<p:outputPanel rendered="#{not empty cadUserBean.selectedUser}">
 						<div class="row justify-content-md-center">
-							<div class="col-md-6">
-								<div class="field">
-									<p:outputLabel for="usu_Cod">Codigo</p:outputLabel>
-									<p:inputText id="usu_Cod"
-										value="#{cadUserBean.selectedUser.usu_Cod}" required="true" />
-								</div>
-								<div class="field">
-									<p:outputLabel for="usu_Login">Login</p:outputLabel>
-									<p:inputText id="usu_Login"
-										value="#{cadUserBean.selectedUser.usu_Login}" required="true" />
-								</div>
-								<div class="field">
-									<p:outputLabel for="usu_Email">E-mail</p:outputLabel>
-									<p:inputText id="usu_Email" type="email"
-										value="#{cadUserBean.selectedUser.usu_Email}" required="true" />
-								</div>
-								<div class="field">
-									<p:outputLabel for="pwd">Senha</p:outputLabel>
-									<p:password id="pwd"
-										value="#{cadUserBean.selectedUser.usu_Senha}" match="pwdConf"
-										required="true"></p:password>
-								</div>
-								<div class="field">
-									<p:outputLabel for="pwdConf">Confirme a Senha</p:outputLabel>
-									<p:password id="pwdConf"
-										value="#{cadUserBean.selectedUser.usu_Senha}" required="true"></p:password>
-								</div>
 
+							<p:card>
+								<f:facet name="header">
+									<div class="container">
+										<div class="row">
+											<div class="col-md-4">
+												<div class="container" style="text-align: center;">
 
-							</div>
+													<img src="#{cadUserBean.selectedUser.usu_img}"
+														alt="imagem profile"
+														style="margin: 1px; padding: 1px; min-width: 120px; min-height: 130px; max-width: 130px; max-height: 190px;" />
 
+													<div class="card">
+														<h5>Foto Upload</h5>
+														<h:form>
+															<p:fileUpload value="#{fileUploadView.file}"
+																mode="simple" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+																sizeLimit="5000000" skinSimple="true" auto="true"
+																process="@this" update="messages"
+																invalidSizeMessage="Tamanho Máx: 5mb"
+																invalidFileMessage="Somente: .gif |.jpeg |.png"
+																listener="#{fileUploadView.handleFileUpload}" />
+														</h:form>
+													</div>
 
-
+												</div>
+											</div>
+											<div class="col-md-1"></div>
+											<div class="col-md-7">
+												<div class="container" style="text-align: center;">
+													<div class="field">
+														<p:outputLabel for="usu_Cod">Codigo</p:outputLabel>
+														<p:inputText id="usu_Cod"
+															value="#{cadUserBean.selectedUser.usu_Cod}"
+															required="true" />
+													</div>
+													<div class="field">
+														<p:outputLabel for="usu_Login">Login</p:outputLabel>
+														<p:inputText id="usu_Login"
+															value="#{cadUserBean.selectedUser.usu_Login}"
+															required="true" />
+													</div>
+													<div class="field">
+														<p:outputLabel for="usu_Email">E-mail</p:outputLabel>
+														<p:inputText id="usu_Email" type="email"
+															value="#{cadUserBean.selectedUser.usu_Email}"
+															required="true" />
+													</div>
+													<div class="field">
+														<p:outputLabel for="pwd">Senha</p:outputLabel>
+														<p:password id="pwd"
+															value="#{cadUserBean.selectedUser.usu_Senha}"
+															match="pwdConf" required="true"></p:password>
+													</div>
+													<div class="field">
+														<p:outputLabel for="pwdConf">Confirme a Senha</p:outputLabel>
+														<p:password id="pwdConf"
+															value="#{cadUserBean.selectedUser.usu_Senha}"
+															required="true"></p:password>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</f:facet>
+							</p:card>
 						</div>
-
-
 						<div class="row"></div>
 					</p:outputPanel>
 
@@ -253,9 +283,13 @@
 						onclick="PF('manageProductDialog').hide()"
 						class="ui-button-secondary" type="button" />
 
-					<p:messages id="msgpwd" showDetail="true">
+					<!-- 
+						<p:messages id="msgpwd" showDetail="true">
 						<p:autoUpdate />
 					</p:messages>
+					
+					 -->
+
 
 				</f:facet>
 
