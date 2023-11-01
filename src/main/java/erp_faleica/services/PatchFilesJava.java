@@ -19,7 +19,7 @@ public class PatchFilesJava implements Serializable {
 	}
 	
 	public String getPatchPakage() {
-		String strPath = new File("").getAbsolutePath()+"\\erpfaleica\\system\\images";
+		String strPath = new File("").getAbsolutePath()+"\\erp_faleica\\system\\images";
 		
 		File path = new File(strPath);
 		
@@ -28,7 +28,7 @@ public class PatchFilesJava implements Serializable {
 			System.out.println(path.getAbsolutePath());
 			return strPath;
 		}else {
-			System.out.println("NAO EXISTE DIRETORIO! "+strPath);
+			System.out.println("NAO EXISTE DIRETORIO! Criacao em andamento... "+strPath);
 			boolean createSuccess = new File(strPath).mkdirs();
 			if(createSuccess) {
 				System.out.println("Diretorio criado com sucesso!");

@@ -1,6 +1,7 @@
 package erp_faleica.controllers;
 
 import java.awt.MenuComponent;
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -138,13 +139,15 @@ public class CadastroUsuarioBean implements Serializable {
 	
 	
 	public void openNew() {
+		File file = new File("");
+		System.out.println(file.getAbsolutePath());
 		
 		if(newUser.getUsu_img() == null) {
 			System.out.println("entrou em openNew");
-			CadastroUsuarioBean.newUser.setUsu_img("../Users/fabio/Desktop/erpfaleica/system/images/Fabio.jpg");
-			System.out.println("SEM IMAGEM: "+newUser.getUsu_img());
+			CadastroUsuarioBean.newUser.setUsu_img("/erp_faleica/img/notImageUser.png");
+			System.out.println("Atrbuindo IMAGEM Not User que esta na pasta: "+newUser.getUsu_img());
 		}else {
-			System.out.println("COM IMAGEM: "+newUser.getUsu_img());
+			System.out.println("Ja existe IMAGEM no User: "+newUser.getUsu_img());
 		}
 		
 		

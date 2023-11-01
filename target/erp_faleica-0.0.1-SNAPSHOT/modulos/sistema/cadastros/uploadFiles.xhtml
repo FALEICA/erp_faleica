@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<link rel="shortcut icon" href="/erp_faleica/img/favicon.ico"
+		type="image/x-icon" />
+
+	<!-- Bootstrap Icons -->
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
+	<!-- Bootstrap -->
+	<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+		crossorigin="anonymous" />
+
+	<h:outputStylesheet library="css"
+		name="/erp_faleica/css/templateStyle.css" />
+	<link rel="stylesheet" href="/erp_faleica/css/templateStyle.css" />
+
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+		crossorigin="anonymous" />
+
+
+
+
+
+</h:head>
+
+
+<body style="background-color: #000000">
+
+	<p:growl id="messages" showDetail="true" />
+	<div class="container-fluid">
+		<div class="row">
+			<p:fileUpload mode="advanced" multiple="false" sizeLimit="5000000"
+				allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+				invalidSizeMessage="Maximum file size allowed is 3mb"
+				invalidFileMessage="only gif | jpg | jpeg | png is allowed"
+				update="" listener="#{uploadFileServices.handleFileUpload()}" />
+
+
+		</div>
+	</div>
+
+	<div class="card">
+		<h5>AUTOMATICO</h5>
+		<h:form>
+			<p:fileUpload value="#{fileUploadView.file}" mode="simple"
+				allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+				sizeLimit="5000"
+				skinSimple="true" auto="true" process="@this" update="messages"
+				invalidSizeMessage="Maximum file size allowed is 3mb"
+				invalidFileMessage="only gif | jpg | jpeg | png is allowed"
+				listener="#{fileUploadView.handleFileUpload}" />
+		</h:form>
+	</div>
+
+
+
+</body>
+</html>

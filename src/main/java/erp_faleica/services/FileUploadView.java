@@ -17,22 +17,39 @@ import erp_faleica.controllers.CadastroUsuarioBean;
 @RequestScoped
 public class FileUploadView implements Serializable {
 
-
 	private static final long serialVersionUID = 1L;
 	
 	private UploadedFile file;
-
+	
+	
+	
     public void handleFileUpload(FileUploadEvent event) {
+    	
+    	
     	
         FacesMessage message = new FacesMessage("Successful", event.getFile().getFileName() + " is uploaded.");
         FacesContext.getCurrentInstance().addMessage(null, message);
         
         
         try {
-        	PatchFilesJava path = new PatchFilesJava();
-        	event.getFile().write(path.getPatchPakage());
-        	System.out.println(path.getPatchPakage()+event.getFile().getFileName());
-        	CadastroUsuarioBean.getNewUser().setUsu_img(path.getPatchPakage()+"\\"+event.getFile().getFileName());
+        	File file = new File("");
+        	String tomCatOFICIAL = "C:\\tomcat\\apache-tomcat-9.0.82\\bin";
+        	
+        	System.out.println("ABSOLUTE PATH: "+file.getAbsolutePath());
+        	System.out.println("TOMCAT STRING: "+tomCatOFICIAL);
+        	
+			
+        	if(file.getAbsolutePath() != tomCatOFICIAL) {
+        		event.getFile().write("X:\\ProjetosJavaWeb2023\\erp_faleica\\src\\main\\webapp\\img");
+        		System.out.println("SALVO NA PASTA de desenvolvimento");
+        	}else {
+        		event.getFile().write("C:\\tomcat\\apache-tomcat-9.0.82\\webapps\\erp_faleica\\img");
+        		System.out.println("SALVO NA PASTA TOMCAT OFICIAL");
+        	}
+			
+        	
+        	CadastroUsuarioBean.getNewUser().setUsu_img("/erp_faleica/img/"+event.getFile().getFileName());
+        	
         	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
