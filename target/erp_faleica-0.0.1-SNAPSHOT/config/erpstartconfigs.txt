@@ -1,0 +1,6 @@
+{
+"pathImage":"C:\\tomcat\\apache-tomcat-9.0.82\\webapps\\erp_faleica\\img\\",
+"sgbdIP":"192.168.1.4",
+"sgbdPORT":"3306"
+}
+  

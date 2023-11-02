@@ -1,6 +1,5 @@
 package erp_faleica.services;
 
-import java.io.File;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
@@ -32,23 +31,20 @@ public class FileUploadView implements Serializable {
         
         
         try {
-        	File file = new File("");
-        	String tomCatOFICIAL = "C:\\tomcat\\apache-tomcat-9.0.82\\bin";
-        	
-        	System.out.println("ABSOLUTE PATH: "+file.getAbsolutePath());
-        	System.out.println("TOMCAT STRING: "+tomCatOFICIAL);
+        	ErpStartConfigsService erpStart = new ErpStartConfigsService();	
+    		String pathImg = erpStart.getStartConfi().getPathImage();
         	
 			
-        	if(file.getAbsolutePath() != tomCatOFICIAL) {
-        		event.getFile().write("X:\\ProjetosJavaWeb2023\\erp_faleica\\src\\main\\webapp\\img");
-        		System.out.println("SALVO NA PASTA de desenvolvimento");
-        	}else {
-        		event.getFile().write("C:\\tomcat\\apache-tomcat-9.0.82\\webapps\\erp_faleica\\img");
-        		System.out.println("SALVO NA PASTA TOMCAT OFICIAL");
+        	if(pathImg != null) {
+        		event.getFile().write(pathImg);
+        		System.out.println("ARQUIVO SALVO EM: "+pathImg);
+        		CadastroUsuarioBean.getNewUser().setUsu_img("/erp_faleica/img/"+event.getFile().getFileName());
+            	
+            	new CadastroUsuarioBean().alteraImagemAtual("/erp_faleica/img/"+event.getFile().getFileName());
         	}
 			
         	
-        	CadastroUsuarioBean.getNewUser().setUsu_img("/erp_faleica/img/"+event.getFile().getFileName());
+        		
         	
         	
 		} catch (Exception e) {

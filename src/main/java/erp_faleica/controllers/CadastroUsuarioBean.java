@@ -28,7 +28,7 @@ public class CadastroUsuarioBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private	static User newUser = new User();
-	private static User selectedUser;
+	private static User selectedUser = new User();
 	private static MenuModulos modulos;
 	private static MenuMenus menus;
 	private static MenuComponent componentes;
@@ -145,6 +145,7 @@ public class CadastroUsuarioBean implements Serializable {
 		if(newUser.getUsu_img() == null) {
 			System.out.println("entrou em openNew");
 			CadastroUsuarioBean.newUser.setUsu_img("/erp_faleica/img/notImageUser.png");
+			
 			System.out.println("Atrbuindo IMAGEM Not User que esta na pasta: "+newUser.getUsu_img());
 		}else {
 			System.out.println("Ja existe IMAGEM no User: "+newUser.getUsu_img());
@@ -167,6 +168,10 @@ public class CadastroUsuarioBean implements Serializable {
 			PrimeFaces.current().ajax().update("form:messages", "form:dt_iduser");
 		}
 		
+	}
+	
+	public void alteraImagemAtual(String image) {
+		CadastroUsuarioBean.selectedUser.setUsu_img(image);
 	}
 
 	

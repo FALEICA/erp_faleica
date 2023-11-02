@@ -7,11 +7,16 @@ import java.sql.SQLException;
 
 import javax.enterprise.context.ApplicationScoped;
 
+import erp_faleica.services.ErpStartConfigsService;
+
 @ApplicationScoped
 public class ConexaoBancoDados implements Serializable {
-
+	
+	
 	
 	private static final long serialVersionUID = 1L;
+	
+	
 	
 	private Connection conn;
 	
@@ -21,6 +26,13 @@ public class ConexaoBancoDados implements Serializable {
 	
 	
 	public Connection ConexaoMySQl() {
+		ErpStartConfigsService erpStart = new ErpStartConfigsService();	
+		String ip = erpStart.getStartConfi().getSgbdIP();
+		String porta = erpStart.getStartConfi().getSgbdPORT();
+		
+		System.out.println("IP/PORTA: "+ip+":"+porta);
+		
+		
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -32,7 +44,8 @@ public class ConexaoBancoDados implements Serializable {
 			
 			
 			this.conn = DriverManager.getConnection(
-					"jdbc:mysql://192.168.1.4:3306/erp_faleica?useSSL=FALSE&serverTimezone=UTC", 
+										
+					"jdbc:mysql://"+ip+":"+porta+"/erp_faleica?useSSL=FALSE&serverTimezone=UTC", 
 					"developer",
 					"#$Iptw3tko");
 		} catch (SQLException e) {
